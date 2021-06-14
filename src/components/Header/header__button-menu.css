@@ -1,0 +1,22 @@
+.header__button-menu {
+  width: 40px;
+  height: 43px;
+  box-sizing: border-box;
+  border: 0px;
+  padding: 0px;
+  background-color: transparent;
+  background-image: url(../../images/menu.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  cursor: pointer;
+}
+
+/* Основной код для разрешения 320px */
+@media screen and (min-width: 768px) {
+  /* При разрешении выше 768px */
+  .header__button-menu {
+    width: 44px;
+    height: 44px;
+  }
+}
