@@ -1,0 +1,17 @@
+.footer__link {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+  color: #FFFFFF;
+  text-decoration-line: none;
+  margin: 0px 0px 12px 0px;
+}
+
+/* Основной код для разрешения 320px */
+@media screen and (min-width: 768px) {
+  /* При разрешении выше 768px */
+  .footer__link {
+    margin: 0px;
+  }
+}

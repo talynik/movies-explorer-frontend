@@ -1,6 +1,7 @@
 import React from 'react';
 import {/* Switch, Route, Redirect, useHistory,  */withRouter} from 'react-router-dom';
 import Header from '../Header/Header';
+import Footer from '../Footer/Footer';
 
 function App() {
 
@@ -18,6 +19,8 @@ function App() {
           loggedIn={loggedIn}
           onMenu={handleLoggedIn}
         />
+
+        <Footer/>
       </div>
     </div>
   );

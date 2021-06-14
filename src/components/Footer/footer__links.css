@@ -1,21 +1,15 @@
-.footer {
+.footer__links {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0px 10px;
+  order: 1;
 }
 
 /* Основной код для разрешения 320px */
 @media screen and (min-width: 768px) {
   /* При разрешении выше 768px */
-  .footer {
-    padding: 0px 30px;
-  }
-}
-
-@media screen and (min-width: 1280px) {
-  /* При разрешении выше 1280px */
-  .footer {
-    padding: 0px 70px;
+  .footer__links {
+    flex-direction: row;
+    order: 2;
   }
 }

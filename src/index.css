@@ -8,3 +8,12 @@
 @import url(./components/Header/header__link-registration.css);
 @import url(./components/Header/header__button-authorization.css);
 @import url(./components/Header/header__button-menu.css);
+
+
+
+@import url(./components/Footer/footer.css);
+@import url(./components/Footer/footer__title.css);
+@import url(./components/Footer/footer__block.css);
+@import url(./components/Footer/footer__links.css);
+@import url(./components/Footer/footer__link.css);
+@import url(./components/Footer/footer__copyright.css);
