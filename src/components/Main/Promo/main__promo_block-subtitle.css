@@ -1,0 +1,26 @@
+.main__promo_block-subtitle {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 13px;
+  line-height: 16px;
+  mix-blend-mode: normal;
+  color: #FFFFFF;
+  opacity: 0.5;
+  margin: 24px 20px 0px 20px;
+}
+
+/* Основной код для разрешения 320px */
+@media screen and (min-width: 768px) {
+  /* При разрешении выше 768px */
+  .main__promo_block-subtitle {
+    margin: 22px 210px 0px 210px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  /* При разрешении выше 1280px */
+  .main__promo_block-subtitle {
+    width: 310px;
+    margin: 36px 0px 0px 0px;
+  }
+}

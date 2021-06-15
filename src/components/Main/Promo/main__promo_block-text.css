@@ -1,0 +1,13 @@
+.main__promo_block-text {
+  text-align: center;
+  order: 2;
+}
+
+@media screen and (min-width: 1280px) {
+  /* При разрешении выше 1280px */
+  .main__promo_block-text {
+    width: 640px;
+    text-align: left;
+    order: 1;
+  }
+}

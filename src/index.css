@@ -9,7 +9,23 @@
 @import url(./components/Header/header__button-authorization.css);
 @import url(./components/Header/header__button-menu.css);
 
+@import url(./components/Main/main.css);
+@import url(./components/Main/main__section_header.css);
 
+@import url(./components/Main/Promo/main__promo.css);
+@import url(./components/Main/Promo/main__promo_block.css);
+@import url(./components/Main/Promo/main__promo_block-poster.css);
+@import url(./components/Main/Promo/main__promo_block-text.css);
+@import url(./components/Main/Promo/main__promo_block-title.css);
+@import url(./components/Main/Promo/main__promo_block-subtitle.css);
+@import url(./components/Main/Promo/main__promo_button.css);
+
+@import url(./components/Main/AboutProject/main__aboutProject.css);
+@import url(./components/Main/AboutProject/main__aboutProject_block.css);
+@import url(./components/Main/AboutProject/main__aboutProject_stage.css);
+@import url(./components/Main/AboutProject/main__aboutProject_time.css);
+@import url(./components/Main/AboutProject/main__aboutProject_title.css);
+@import url(./components/Main/AboutProject/main__aboutProject_subtitle.css);
 
 @import url(./components/Footer/footer.css);
 @import url(./components/Footer/footer__title.css);

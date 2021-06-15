@@ -1,0 +1,23 @@
+.main__promo-block {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0px 10px;
+}
+
+/* Основной код для разрешения 320px */
+@media screen and (min-width: 768px) {
+  /* При разрешении выше 768px */
+  .main__promo-block {
+    padding: 0px 44px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  /* При разрешении выше 1280px */
+  .main__promo-block {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 75px 0px 0px 0px;
+  }
+}
