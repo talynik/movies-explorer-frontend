@@ -1,0 +1,13 @@
+.main__aboutProject_block {
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+}
+
+/* Основной код для разрешения 320px */
+@media screen and (min-width: 768px) {
+  /* При разрешении выше 768px */
+  .main__aboutProject_block {
+    flex-direction: row;
+  }
+}
