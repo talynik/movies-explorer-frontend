@@ -2,6 +2,8 @@
   display: flex;
   flex-direction: column;
   justify-content:space-between;
+  border-top: 1px solid #DADADA;
+  padding-top: 60px;
 }
 
 /* Основной код для разрешения 320px */
@@ -9,5 +11,6 @@
   /* При разрешении выше 768px */
   .main__aboutProject_block {
     flex-direction: row;
+    padding-top: 70px;
   }
 }

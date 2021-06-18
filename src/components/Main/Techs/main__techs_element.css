@@ -1,0 +1,20 @@
+.main__techs_element {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #303030;
+  border-radius: 10px;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: -0.04em;
+}
+
+/* Основной код для разрешения 320px */
+@media screen and (min-width: 1280px) {
+  /* При разрешении выше 1280px */
+  .main__techs_element {
+    font-size: 14px;
+    line-height: 17px;
+  }
+}

@@ -1,26 +1,27 @@
-.main__section_header {
-  width: 100%;
+.main__techs_title {
   font-weight: normal;
-  font-size: 18px;
-  line-height: 22px;
+  font-size: 30px;
+  line-height: 36px;
   letter-spacing: -0.04em;
+  border-top: 1px solid #000000;
+  padding-top: 60px;
   margin: 0px;
-  padding: 70px 0px 28px 0px;
+  text-align: center;
 }
 
 /* Основной код для разрешения 320px */
 @media screen and (min-width: 768px) {
   /* При разрешении выше 768px */
-  .main__section_header {
-    font-size: 22px;
-    line-height: 27px;
-    padding: 90px 0px 23px 0px;
+  .main__techs_title {
+    padding-top: 80px;
+    font-size: 50px;
+    line-height: 58px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   /* При разрешении выше 1280px */
-  .main__section_header {
-    padding: 110px 0px 23px 0px;
+  .main__techs_title {
+    padding-top: 90px;
   }
 }
