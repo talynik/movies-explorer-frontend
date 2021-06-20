@@ -7,11 +7,68 @@
   padding: 0px 14px;
 }
 
+.header__logo {
+  width: 38px;
+  margin: 18px 0px;
+}
+
+.header__link-registration {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 16px;
+  align-items: center;
+  color: #FFFFFF;
+  text-decoration: none;
+  margin-right: 14px;
+  cursor: pointer;
+}
+
+.header__button-authorization {
+  width: 54px;
+  height: 26px;
+  background: #3DDC84;
+  border-radius: 3px;
+  border: 0px;
+  padding: 0px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 16px;
+  align-items: center;
+  color: #000000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.header__button-menu {
+  width: 40px;
+  height: 43px;
+  box-sizing: border-box;
+  border: 0px;
+  padding: 0px;
+  background-color: transparent;
+  background-image: url(../../images/menu.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+  cursor: pointer;
+}
+
 /* Основной код для разрешения 320px */
 @media screen and (min-width: 768px) {
   /* При разрешении выше 768px */
   .header {
     padding: 0px 30px;
+  }
+
+  .header__link-registration {
+    margin-right: 30px;
+  }
+
+  .header__button-menu {
+    width: 44px;
+    height: 44px;
   }
 }
 

@@ -1,0 +1,154 @@
+.aboutMe {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0px 18px;
+}
+
+.aboutMe__blok {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid #DADADA;
+  padding: 60px 0px 69px 0px;
+}
+
+.aboutMe__picture {
+  width: 100%;
+  margin: 0px;
+  border-radius: 10px;
+  order: 1;
+}
+
+.aboutMe__about {
+  display: flex;
+  flex-direction: column;
+  width: 292px;
+  margin-top: 40px;
+  order: 2;
+}
+
+.aboutMe__title {
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 36px;
+  letter-spacing: -0.04em;
+  margin: 0px;
+}
+
+.aboutMe__subtitle {
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 16px;
+  margin: 20px 0px 20px 0px;
+}
+
+.aboutMe__text {
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 16px;
+  mix-blend-mode: normal;
+  margin: 0px;
+}
+
+.aboutMe__list {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  list-style: none;
+  margin: 0px;
+  padding: 40px 0px 0px 0px;
+}
+
+.aboutMe__link {
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #FFFFFF;
+  text-decoration-line: none;
+  margin: 0px 26px 0px 0px;
+}
+
+/* Основной код для разрешения 320px */
+@media screen and (min-width: 768px) {
+  /* При разрешении выше 768px */
+  .aboutMe {
+    padding: 0px 50px;
+  }
+
+  .aboutMe__blok {
+    flex-direction: row;
+    justify-content: space-between;
+    max-height: 307px;
+    padding: 66px 0px 90px 0px;
+  }
+
+  .aboutMe__picture {
+    order: 2;
+    width: 255px;
+  }
+
+  .aboutMe__about {
+    order: 1;
+    width: 364px;
+    margin-top: 0px;
+  }
+
+  .aboutMe__title {
+    font-size: 40px;
+    line-height: 40px;
+  }
+
+  .aboutMe__subtitle {
+    font-size: 12px;
+    line-height: 18px;
+    margin: 16px 0px 20px 0px;
+  }
+
+  .aboutMe__text {
+    font-size: 12px;
+    line-height: 18px;
+  }
+
+  .aboutMe__list {
+    padding: 40px 0px 90px 0px;
+  }
+
+  .aboutMe__link {
+    margin: 0px 20px 0px 0px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  /* При разрешении выше 1280px */
+  .aboutMe {
+    padding: 0px 70px;
+  }
+
+  .aboutMe__blok {
+    padding: 66px 0px 100px 0px;
+  }
+
+  .aboutMe__picture {
+    width: 270px;
+  }
+
+  .aboutMe__about {
+    width: 600px;
+  }
+
+  .aboutMe__title {
+    font-size: 50px;
+    line-height: 58px;
+  }
+
+  .aboutMe__subtitle {
+    font-size: 18px;
+    line-height: 20px;
+    margin: 18px 0px 26px 0px;
+  }
+
+  .aboutMe__text {
+    font-size: 14px;
+    line-height: 22px;
+  }
+}

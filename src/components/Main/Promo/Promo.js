@@ -9,15 +9,15 @@ function Promo({onNavTab}) {
   }
 
   return (
-    <section className="main__promo">
-      <div className="main__promo-block">
-        <img src={poster} className="main__promo_block-poster" alt="Логотип" />
-        <div className="main__promo_block-text">
-          <h1 className="main__promo_block-title">Учебный проект студента факультета Веб-разработки.</h1>
-          <p className="main__promo_block-subtitle">Листайте ниже, чтобы узнать больше про этот проект и его создателя.</p>
+    <section className="promo">
+      <div className="promo__block">
+        <img src={poster} className="promo__block_poster" alt="Логотип" />
+        <div className="promo__block_text">
+          <h1 className="promo__block_title">Учебный проект студента факультета Веб-разработки.</h1>
+          <p className="promo__block_subtitle">Листайте ниже, чтобы узнать больше про этот проект и его создателя.</p>
         </div>
       </div>
-      <button className="main__promo_button" type="button" aria-label="Узнать больше" onClick={handleNavTabClick}>Узнать больше</button>
+      <button className="promo__button" type="button" aria-label="Узнать больше" onClick={handleNavTabClick}>Узнать больше</button>
     </section>
   );
 }

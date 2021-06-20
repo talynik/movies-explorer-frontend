@@ -1,0 +1,96 @@
+.techs {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0px 18px;
+}
+
+.techs__title {
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 36px;
+  letter-spacing: -0.04em;
+  border-top: 1px solid #000000;
+  padding-top: 60px;
+  margin: 0px;
+  text-align: center;
+}
+
+.techs__subtitle {
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 16px;
+  margin: 24px 0px 50px 0px;
+  text-align: center;
+}
+
+.techs__list {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fit, 84px);
+  grid-auto-rows: 57px;
+  grid-gap: 10px;
+  margin: 0px;
+  padding: 0px 20px 70px 20px;
+  list-style: none;
+}
+
+.techs__element {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #303030;
+  border-radius: 10px;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: -0.04em;
+}
+
+/* Основной код для разрешения 320px */
+@media screen and (min-width: 768px) {
+  /* При разрешении выше 768px */
+  .techs {
+    padding: 0px 50px;
+  }
+
+  .techs__title {
+    padding-top: 80px;
+    font-size: 50px;
+    line-height: 58px;
+  }
+
+  .techs__subtitle {
+    font-size: 12px;
+    line-height: 18px;
+    margin: 22px 0px 83px 0px;
+  }
+
+  .techs__list {
+    padding: 0px 0px 90px 0px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  /* При разрешении выше 1280px */
+  .techs {
+    padding: 0px 70px;
+  }
+
+  .techs__title {
+    padding-top: 80px;
+    font-size: 50px;
+    line-height: 58px;
+  }
+
+  .techs__subtitle {
+    font-size: 14px;
+    line-height: 20px;
+    margin: 26px 0px 100px 0px;
+  }
+
+  .techs__element {
+    font-size: 14px;
+    line-height: 17px;
+  }
+}

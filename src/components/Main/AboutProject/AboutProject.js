@@ -4,23 +4,23 @@ import {withRouter} from "react-router-dom";
 function AboutProject() {
 
   return (
-    <section className="main__aboutProject">
+    <section className="aboutProject">
       <h2 className="main__section_header">О проекте</h2>
-      <div className="main__aboutProject_block">
-        <div className="main__aboutProject_stage">
-          <h3 className="main__aboutProject_title">Дипломный проект включал 5 этапов</h3>
-          <p className="main__aboutProject_subtitle">Составление плана, работу над бэкендом, вёрстку, добавление функциональности и финальные доработки.</p>
+      <div className="aboutProject__block">
+        <div className="aboutProject__stage">
+          <h3 className="aboutProject__title">Дипломный проект включал 5 этапов</h3>
+          <p className="aboutProject__subtitle">Составление плана, работу над бэкендом, вёрстку, добавление функциональности и финальные доработки.</p>
         </div>
-        <div className="main__aboutProject_time">
-          <h3 className="main__aboutProject_title">На выполнение диплома ушло 5 недель</h3>
-          <p className="main__aboutProject_subtitle">У каждого этапа был мягкий и жёсткий дедлайн, которые нужно было соблюдать, чтобы успешно защититься.</p>
+        <div className="aboutProject__time">
+          <h3 className="aboutProject__title">На выполнение диплома ушло 5 недель</h3>
+          <p className="aboutProject__subtitle">У каждого этапа был мягкий и жёсткий дедлайн, которые нужно было соблюдать, чтобы успешно защититься.</p>
         </div>
       </div>
-      <div className="main__aboutProject_shema">
-        <p className="main__aboutProject_shema-type1">1 неделя</p>
-        <p className="main__aboutProject_shema-type2">4 неделя</p>
-        <p className="main__aboutProject_shema-type3">Back-end</p>
-        <p className="main__aboutProject_shema-type3">Front-end</p>
+      <div className="aboutProject__shema">
+        <p className="aboutProject__shema_type1">1 неделя</p>
+        <p className="aboutProject__shema_type2">4 неделя</p>
+        <p className="aboutProject__shema_type3">Back-end</p>
+        <p className="aboutProject__shema_type3">Front-end</p>
       </div>
     </section>
   );
