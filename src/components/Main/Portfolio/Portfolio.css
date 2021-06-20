@@ -15,16 +15,36 @@
 }
 
 .portfolio__links {
-  display: grid;
-  justify-content:space-between;
-  grid-template-columns: auto auto;
-  grid-template-rows: 35px 23px;
+  list-style: none;
   margin: 40px 0px 70px 0px;
+  padding: 0px;
+}
+
+.portfolio__block {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.portfolio__block-line {
+  padding-top: 20px;
+  margin-top: 19px;
+  border-top: 1px solid #E6E6E6;
 }
 
 .portfolio__link {
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 28px;
+  letter-spacing: -0.04em;
   color: #FFFFFF;
   text-decoration-line: none;
+}
+
+.portfolio__picture {
+  width: 18px;
+  height: 28px;
 }
 
 /* Основной код для разрешения 320px */
@@ -33,11 +53,43 @@
   .portfolio {
     padding: 0px 50px;
   }
+
+  .portfolio__header {
+    font-size: 18px;
+  }
+
+  .portfolio__links {
+    margin: 50px 0px 90px 0px;
+  }
+
+  .portfolio__link {
+    font-size: 28px;
+    line-height: 50px;
+  }
+
+  .portfolio__picture {
+    width: 27px;
+    height: 60px;
+  }
 }
 
 @media screen and (min-width: 1280px) {
   /* При разрешении выше 1280px */
   .portfolio {
     padding: 0px 70px;
+  }
+
+  .portfolio__links {
+    margin: 100px 0px 125px 0px;
+  }
+
+  .portfolio__link {
+    font-size: 30px;
+    line-height: 50px;
+  }
+
+  .portfolio__picture {
+    width: 29px;
+    height: 60px;
   }
 }
