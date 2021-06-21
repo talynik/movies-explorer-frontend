@@ -1,0 +1,96 @@
+.navTab {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: #073042;
+  padding: 0px 10px;
+}
+
+.navTab__title {
+  align-items: center;
+  text-align: center;
+  background-image: url(../../../images/backgraund.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 248px;
+  font-weight: normal;
+  font-size: 31px;
+  line-height: 39px;
+  letter-spacing: -0.04em;
+  padding: 207px 0px 246px 0px;
+  margin: 0px;
+}
+
+.navTab__links {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #000000;
+  list-style: none;
+  width: 320px;
+  margin: 0px -10px;
+  padding: 0px;
+}
+
+.navTab__link {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 16px;
+  text-decoration-line: underline;
+  color: #FFFFFF;
+  padding: 25px 0px;
+}
+
+.navTab__link_centr {
+  margin: 0px 24px;
+}
+
+/* Основной код для разрешения 320px */
+@media screen and (min-width: 768px) {
+  /* При разрешении выше 768px */
+  .navTab {
+    background-size: 320px;
+    padding: 0px 44px;
+  }
+
+  .navTab__title {
+    font-size: 50px;
+    line-height: 58px;
+  }
+
+  .navTab__links {
+    width: 768px;
+    margin: 0px -44px;
+  }
+  
+  .navTab__link {
+    font-size: 13px;
+    padding: 24px 0px;
+  }
+  .navTab__link_centr {
+    margin: 0px 40px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  /* При разрешении выше 1280px */
+  .navTab {
+    padding: 0px 70px;
+  }
+
+  .navTab__title {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 0px 205px;
+  }
+  
+  .navTab__links {
+    width: 1280px;
+    margin: 0px -70px;
+  }
+}

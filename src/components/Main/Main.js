@@ -1,7 +1,7 @@
 import React from 'react';
-import {/* Switch, Route, Redirect, useHistory,  */withRouter} from 'react-router-dom';
+import { withRouter} from 'react-router-dom';
 import Promo from './Promo/Promo';
-// import NavTab from './NavTab/NavTab';
+import NavTab from './NavTab/NavTab';
 import AboutProject from './AboutProject/AboutProject';
 import Techs from './Techs/Techs';
 import AboutMe from './AboutMe/AboutMe';
@@ -9,10 +9,21 @@ import Portfolio from './Portfolio/Portfolio';
 
 function Main() {
 
+  //переменная состояния навигации
+  const [isNavTab, setIsNavTab] = React.useState(false);
+
+  function handleOnNavTab() {
+    setIsNavTab(true);
+  }
+
   return (
     <main className="main">
-      <Promo/>
-      {/* <NavTab/> */}
+      {!isNavTab ? 
+        <Promo
+          onNavTab={handleOnNavTab}
+        /> : 
+        <NavTab/>
+      }
       <AboutProject/>
       <Techs/>
       <AboutMe/>

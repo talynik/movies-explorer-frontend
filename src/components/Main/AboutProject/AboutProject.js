@@ -4,7 +4,7 @@ import {withRouter} from "react-router-dom";
 function AboutProject() {
 
   return (
-    <section className="aboutProject">
+    <section className="aboutProject" id="aboutProject">
       <h2 className="main__section_header">О проекте</h2>
       <div className="aboutProject__block">
         <div className="aboutProject__stage">
