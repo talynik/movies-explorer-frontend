@@ -1,0 +1,129 @@
+.signForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 56px 30px 30px;
+}
+
+.signForm__logo {
+  width: 38px;
+}
+
+.signForm__form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  color: #FFFFFF;
+}
+
+.signForm__title {
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  margin: 50px auto 80px auto;
+}
+
+.signForm__placeholder {
+  align-self: flex-start;
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 12px;
+  color: #8B8B8B;
+}
+
+.signForm__input {
+  border: 0;
+  width: 100%;
+  box-sizing: border-box;
+  border-bottom: 1px solid #424242;
+  background-color: transparent;
+  padding: 5px 0px 10px 0px;
+  margin: 0px;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 17px;
+  color: #FFFFFF;
+}
+
+.signForm__input-error {
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 12px;
+  color: #EE3465;
+  display: block;
+  margin: 6px 0px;
+  box-sizing: border-box;
+  height: 24px;
+}
+
+.signForm__button {
+  width: 100%;
+  height: 45px;
+  background:  #4285F4;
+  border-radius: 3px;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  color: #FFFFFF;
+  margin-top: 273px;
+  margin-bottom: 14px;
+  cursor: pointer;
+}
+
+.signForm__button:hover {
+  opacity: 0.8;
+}
+
+.signForm__question {
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+  color: #8B8B8B;
+  margin: 0px;
+}
+
+.signForm__link {
+  color: #4285F4;
+  text-decoration-line: none;
+  margin-left: 7px;
+}
+
+/* Основной код для разрешения 320px */
+@media screen and (min-width: 768px) {
+  /* При разрешении выше 768px */
+  .signForm {
+    padding: 232px 186px;
+  }
+  
+  .signForm__form {
+    align-items: flex-start;
+  }
+
+  .signForm__title {
+    margin: 40px 0px;
+  }
+
+  .signForm__button {
+    font-size: 14px;
+    line-height: 17px;
+    margin-top: 185px;
+    margin-bottom: 16px;
+  }
+
+  .signForm__question {
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  /* При разрешении выше 1280px */
+  .signForm {
+    padding: 70px 442px;
+  }
+
+  .signForm__button {
+    margin-top: 198px;
+  }
+}
