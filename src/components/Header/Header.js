@@ -9,7 +9,7 @@ function Header({loggedIn, onMenu}) {
   }
 
   return (
-    <header className="header">
+    <header className={`header ${loggedIn && 'header-black'}`}>
       <img src={logo} className="header__logo" alt="Логотип" />
       {!loggedIn ?
         <>

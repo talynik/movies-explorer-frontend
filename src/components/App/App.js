@@ -1,13 +1,15 @@
 import React from 'react';
 import {/* Switch, Route, Redirect, useHistory,  */withRouter} from 'react-router-dom';
 import Header from '../Header/Header';
-import Main from '../Main/Main';
+// import Main from '../Main/Main';
+import Movies from '../Movies/Movies';
+import Login from '../Login/Login';
 import Footer from '../Footer/Footer';
 
 function App() {
 
     //переменная состояния авторизации
-  const [loggedIn, setLoggedIn] = React.useState(false);
+  const [loggedIn, setLoggedIn] = React.useState(true);
 
   function handleLoggedIn() {
     setLoggedIn(true);
@@ -21,7 +23,10 @@ function App() {
           onMenu={handleLoggedIn}
         />
 
-        <Main/>
+        {/* <Main/> */}
+
+        <Movies/>
+        <Login/>
 
         <Footer/>
       </div>

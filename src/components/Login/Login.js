@@ -1,16 +1,12 @@
 import React from 'react';
 import {withRouter} from 'react-router-dom';
-import SignForm from './SignForm'
 
-function Login({identification}) {
+function Login() {
 
   return (
-    <SignForm
-      title='Вход'
-      button='Войти'
-      identification={identification}
-    >
-    </SignForm>
+    <section>
+
+    </section>
   );
 }
 export default withRouter(Login);

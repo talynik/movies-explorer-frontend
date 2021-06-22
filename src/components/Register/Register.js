@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link, withRouter} from 'react-router-dom';
-import SignForm from './SignForm'
+import SignForm from '../SignForm'
 
 function Register({identification}) {
 

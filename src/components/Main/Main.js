@@ -1,5 +1,5 @@
 import React from 'react';
-import { withRouter} from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import Promo from './Promo/Promo';
 import NavTab from './NavTab/NavTab';
 import AboutProject from './AboutProject/AboutProject';
