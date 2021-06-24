@@ -18,7 +18,7 @@ function App() {
   const [isNavigationOpen, setIsNavigationOpen] = React.useState(false);
 
     //переменная состояния авторизации
-  const [loggedIn, setLoggedIn] = React.useState(true);
+  const [loggedIn, setLoggedIn] = React.useState(false);
 
   function handleNavigation() {
     setIsNavigationOpen(true);
