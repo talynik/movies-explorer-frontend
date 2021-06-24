@@ -1,16 +1,28 @@
 import React from 'react';
-import {Link, withRouter} from 'react-router-dom';
-import SignForm from '../SignForm'
+import {withRouter} from 'react-router-dom';
+import SignForm from '../SignForm/SignForm'
 
 function Register({identification}) {
 
+  const [name, setname] = React.useState('');
+
+  function handleChangeName(evt) {
+    setname(evt.target.value);
+  }
+
   return (
     <SignForm
-      title='Регистрация'
+      title='Добро пожаловать!'
       button='Зарегистрироваться'
-      identification={identification}
+      question='Уже зарегистрированы?'
+      link='/signin'
+      linkText='Войти'
+      name={name}
+      // identification={identification}
     >
-      <Link to="/signin" className='sign__link'>Уже зарегистрированы? Войти</Link>
+      <p className="signForm__placeholder">Имя</p>
+      <input  autoComplete="off" type="text" id="name" name="name" className="signForm__input" required value={name} onChange={handleChangeName}/>
+      <span id="login-error" className="signForm__input-error"></span>
     </SignForm>
   );
 }

@@ -1,6 +1,4 @@
 import React from 'react';
-import {withRouter} from "react-router-dom";
-// import FilterCheckbox from '../FilterCheckbox/FilterCheckbox';
 
 function SearchForm({handleSubmit, isLoading}) {
 
@@ -10,8 +8,7 @@ function SearchForm({handleSubmit, isLoading}) {
       <input  autoComplete="off" id="search" name="search" className="searchForm__input" placeholder="Фильм"/>
       <button className="searchForm__button" type="submit" aria-label="Найти" onClick={handleSubmit}>{isLoading ? "Поиск..." : "Найти"}</button>
       </form>
-      {/* <FilterCheckbox/> */}
     </section>
   );
 }
-export default withRouter(SearchForm);
+export default SearchForm;

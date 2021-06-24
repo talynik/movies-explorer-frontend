@@ -1,0 +1,77 @@
+.profile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0px 14px 10px 14px;
+  border-bottom: 1px solid #424242;
+}
+
+.profile__title {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 29px;
+  text-align: center;
+  color: #FFFFFF;
+  margin: 70px 0px 80px 0px;
+}
+
+.profile__input {
+  border: 0;
+  max-width: 70%;
+  height: 46px;
+  box-sizing: border-box;
+  background-color: #2F2F2F;
+  margin: 0px 0px 0px 19px;
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 17px;
+  color: #8B8B8B;
+}
+
+.profile__button {
+  border: 0;
+  width: 58.65px;
+  height: 34px;
+  padding: 0px;
+  margin-right: 6px;
+  box-sizing: border-box;
+  background-color: #4285F4;
+  border-radius: 48px;
+  font-weight: 500;
+  font-size: 11px;
+  line-height: 18px;
+  text-align: center;
+  color: #FFFFFF;
+}
+
+/* Основной код для разрешения 320px */
+@media screen and (min-width: 768px) {
+  /* При разрешении выше 768px */
+  .profile {
+    margin: 0px 30px 10px 30px;
+  }
+
+  .profile__input {
+    max-width: 85%;
+    font-size: 13px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  /* При разрешении выше 1280px */
+  .profile {
+    margin: 0px 70px 10px 70px;
+  }
+
+  .profile__form {
+    margin: 60px 0px 42px 0px;
+  }
+
+  .profile__input {
+    max-width: 90%;
+    font-size: 13px;
+  }
+}

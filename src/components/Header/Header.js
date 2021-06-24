@@ -15,7 +15,7 @@ function Header({loggedIn, onMenu}) {
         <>
           <div className="header__links">
             <Link to='/signup' className="header__link-registration">Регистрация</Link>
-            <button className="header__button-authorization" type="button" aria-label="Войти" onClick={handleMenuClick}>Войти</button>
+            <Link to='/signin' className="header__link-authorization">Войти</Link>
           </div>
         </> :
           <button className="header__button-menu" type="button" aria-label="Меню" onClick={handleMenuClick}></button>

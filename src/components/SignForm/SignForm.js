@@ -1,10 +1,10 @@
 import React from 'react';
 import {Link, withRouter} from 'react-router-dom';
-// import formValidator from './formValidator';
-// import {validationSign} from '../utils/utils';
+import formValidator from '../formValidator';
+import {validationSign} from '../../utils/utils';
 import logo from '../../logo.svg';
 
-function SignForm({title, button, question, link, linkText, children, identification}) {
+function SignForm({title, button, question, link, linkText, children, name, identification}) {
 
   const [login, setlogin] = React.useState('');
   const [password, setpassword] = React.useState('');
@@ -21,14 +21,15 @@ function SignForm({title, button, question, link, linkText, children, identifica
     evt.preventDefault();
   
     identification({
+      name: name,
       email: login,
       password: password
     });
   }
 
-  // React.useEffect(() => {
-  //   formValidator(validationSign, `.signForm__form`);
-  // });
+  React.useEffect(() => {
+    formValidator(validationSign, `.signForm__form`);
+  });
 
   return (
     <section className='signForm'>
