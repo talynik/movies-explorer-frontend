@@ -2,8 +2,7 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  margin: 0px 14px 10px 14px;
-  border-bottom: 1px solid #424242;
+  margin: 0px 4px 0px;
 }
 
 .searchForm__form {
@@ -51,10 +50,6 @@
 /* Основной код для разрешения 320px */
 @media screen and (min-width: 768px) {
   /* При разрешении выше 768px */
-  .searchForm {
-    margin: 0px 30px 10px 30px;
-  }
-
   .searchForm__input {
     max-width: 85%;
     font-size: 13px;
@@ -63,10 +58,6 @@
 
 @media screen and (min-width: 1280px) {
   /* При разрешении выше 1280px */
-  .searchForm {
-    margin: 0px 70px 10px 70px;
-  }
-
   .searchForm__form {
     margin: 60px 0px 42px 0px;
   }

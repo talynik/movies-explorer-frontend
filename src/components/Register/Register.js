@@ -22,7 +22,7 @@ function Register({identification}) {
     >
       <p className="signForm__placeholder">Имя</p>
       <input  autoComplete="off" type="text" id="name" name="name" className="signForm__input" required value={name} onChange={handleChangeName}/>
-      <span id="login-error" className="signForm__input-error"></span>
+      <span id="name-error" className="signForm__input-error"></span>
     </SignForm>
   );
 }

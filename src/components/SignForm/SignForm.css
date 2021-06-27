@@ -46,6 +46,10 @@
   color: #FFFFFF;
 }
 
+.signForm__input_password {
+  color: #EE3465;
+}
+
 .signForm__input-error {
   font-weight: normal;
   font-size: 10px;

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Switch, Route, /*Redirect,  useHistory,  */withRouter} from 'react-router-dom';
+import {Switch, Route, Redirect, useHistory, withRouter} from 'react-router-dom';
 // import ProtectedRoute from './ProtectedRoute';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
@@ -9,47 +9,50 @@ import Profile from '../Profile/Profile';
 import Login from '../Login/Login';
 import Register from '../Register/Register';
 import Footer from '../Footer/Footer';
-import Navigation from '../Navigation/Navigation';
 import {cards, saveCards} from '../../utils/utils'
 
 function App() {
 
-  //переменная состояния, отвечающие за видимость навигации
-  const [isNavigationOpen, setIsNavigationOpen] = React.useState(false);
+  const history = useHistory();
 
-    //переменная состояния авторизации
+  // переменная отображения шапки
+  let onDispleyHeader = (
+    history.location.pathname === '/main' ||
+    history.location.pathname === '/movies' ||
+    history.location.pathname === '/savedmovies' ||
+    history.location.pathname === '/profile'
+    );
+
+  // переменная отображения подвала
+  let onDispleyFooter = (
+    history.location.pathname === '/main' ||
+    history.location.pathname === '/movies' ||
+    history.location.pathname === '/savedmovies'
+    );
+
+  //переменная состояния авторизации
   const [loggedIn, setLoggedIn] = React.useState(false);
-
-  function handleNavigation() {
-    setIsNavigationOpen(true);
-  }
+  //пременная состояния загрузки
+  const [isLoading, setIsLoading] = React.useState(false);
 
   function handleLoggedIn() {
     setLoggedIn(true);
   }
 
-    //функция закрытия навигации
-    function closeNavigation() {
-      setIsNavigationOpen(false);
-    }
-  
-    //закрытие навигации на ESC
-    function handleEscapeClose(evt) {
-      (evt.key === "Escape") && closeNavigation();
-    }
-  
-    //закрытие навигации по оверлею
-    function handleOverleyClose(evt) {
-      (evt.target === evt.currentTarget) && closeNavigation();
-    }
+  //включение Preloader
+  function onLoading () {
+    setIsLoading(true);
+  }
+
+  //выключение Preloader
+  function ofLoading() {
+    setIsLoading(false);
+  }
 
   return (
     <div className="app">
       <div className="app__content">
-        <Header
-          loggedIn={loggedIn}
-          onMenu={handleNavigation}
-        />
+        {onDispleyHeader && <Header/>}
 
         <Switch>
           <Route path='/main'>
@@ -59,6 +62,9 @@ function App() {
           <Route path='/movies'>
             <Movies
               cards={cards}
+              onLoading={onLoading}
+              isLoading={isLoading}
+              ofLoading={ofLoading}
             />
           </Route>
 
@@ -69,14 +75,12 @@ function App() {
           </Route>
 
           <Route path='/profile'>
-            <Profile
-              cards={saveCards}
-            />
+            <Profile/>
           </Route>
 
           <Route path='/signin'>
             <Login
-              LoggedIn={handleLoggedIn}
+              handleLoggedIn={handleLoggedIn}
               // identification={authorization}
             />
           </Route>
@@ -87,17 +91,14 @@ function App() {
             />
           </Route>
 
+          <Route>
+              {loggedIn ? <Redirect to='/movies' /> : <Redirect to='/main' />}
+          </Route>
+
         </Switch>
 
-        <Footer/>
+        {onDispleyFooter && <Footer/>}
 
-        <Navigation
-            isOpen={isNavigationOpen}
-            onClose={closeNavigation}
-            handleEscapeClose={handleEscapeClose}
-            handleOverleyClose={handleOverleyClose}
-          />
-          
       </div>
     </div>
   );

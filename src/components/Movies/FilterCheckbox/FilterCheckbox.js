@@ -3,10 +3,10 @@ import React from 'react';
 function FilterCheckbox({handleSubmit, isLoading}) {
 
   return (
-    <div>
-      <input id="s1" type="checkbox" class="switch"></input>
-      <label for="s1">Switch</label>
-    </div>
+    <section className="filterCheckbox">
+      <input id="s1" type="checkbox" className="filterCheckbox__switch"></input>
+      <label for="s1">Короткометражки</label>
+    </section>
   );
 }
 export default FilterCheckbox;

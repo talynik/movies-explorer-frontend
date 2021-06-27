@@ -1,77 +1,101 @@
 .profile {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  margin: 0px 14px 10px 14px;
-  border-bottom: 1px solid #424242;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0px 30px 40px;
 }
 
 .profile__title {
-  display: flex;
-  flex-direction: row;
-  align-items: center;
   font-weight: 500;
   font-size: 24px;
   line-height: 29px;
   text-align: center;
-  color: #FFFFFF;
   margin: 70px 0px 80px 0px;
 }
 
-.profile__input {
-  border: 0;
-  max-width: 70%;
-  height: 46px;
-  box-sizing: border-box;
-  background-color: #2F2F2F;
-  margin: 0px 0px 0px 19px;
-  font-weight: normal;
-  font-size: 11px;
-  line-height: 17px;
-  color: #8B8B8B;
+.profile__list {
+  margin: 0px;
+  padding: 0px;
+  width: 100%;
+  list-style: none;
 }
 
-.profile__button {
-  border: 0;
-  width: 58.65px;
-  height: 34px;
-  padding: 0px;
-  margin-right: 6px;
-  box-sizing: border-box;
-  background-color: #4285F4;
-  border-radius: 48px;
+.profile__data {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 17px 0px 16px;
+}
+
+.profile__data_line {
+  border-bottom: 1px solid #424242;
+  padding-top: 0px;
+}
+
+.profile__name {
   font-weight: 500;
   font-size: 11px;
-  line-height: 18px;
-  text-align: center;
+  line-height: 13px;
+  margin: 0px;
+}
+
+.profile__info {
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 13px;
+  margin: 0px;
+}
+
+.profile__link {
+  font-size: 12px;
+  line-height: 15px;
+  text-decoration-line: none;
+}
+
+.profile__link_edit {
+  font-weight: normal;
   color: #FFFFFF;
+  margin: 363px 0px 16px;
+}
+
+.profile__link_exit {
+  font-weight: 500;
+  color: #EE3465;
 }
 
 /* Основной код для разрешения 320px */
 @media screen and (min-width: 768px) {
   /* При разрешении выше 768px */
   .profile {
-    margin: 0px 30px 10px 30px;
+    margin: 0px 179px 269px;
   }
 
-  .profile__input {
-    max-width: 85%;
+  .profile__title {
+    margin: 236px 0px 96px 0px;
+  }
+
+  .profile__link {
     font-size: 13px;
+    line-height: 16px;
+  }
+
+  .profile__link_edit {
+    margin: 194px 0px 16px;
   }
 }
 
 @media screen and (min-width: 1280px) {
   /* При разрешении выше 1280px */
   .profile {
-    margin: 0px 70px 10px 70px;
+    margin: 0px 435px 70px;
   }
 
-  .profile__form {
-    margin: 60px 0px 42px 0px;
+  .profile__title {
+    margin: 74px 0px 123px 0px;
   }
 
-  .profile__input {
-    max-width: 90%;
-    font-size: 13px;
+  .profile__link_edit {
+    margin: 220px 0px 16px;
   }
 }

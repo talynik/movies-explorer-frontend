@@ -4,15 +4,20 @@ import SearchForm from './SearchForm/SearchForm';
 import FilterCheckbox from './FilterCheckbox/FilterCheckbox';
 import MoviesCardList from './MoviesCardList/MoviesCardList'
 
-function Movies({cards}) {
+function Movies({cards, onLoading, isLoading, ofLoading}) {
 
   return (
     <section className="movies">
-      <SearchForm/>
+      <SearchForm
+        onLoading={onLoading}
+        isLoading={isLoading}
+        ofLoading={ofLoading}
+      />
       <FilterCheckbox/>
       <MoviesCardList
         cards={cards}
       />
+      <button className="movies__button" type="button" aria-label="Ещё">Ещё</button>
     </section>
   );
 }

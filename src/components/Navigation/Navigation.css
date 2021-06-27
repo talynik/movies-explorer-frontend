@@ -4,20 +4,19 @@
   align-items: center;
   align-self: center;
   background-color: #202020;
-  position: fixed;
+  position: absolute;
   top: 0;
   right: 0;
   width: 320px;
   visibility: hidden;
   opacity: 0;
   z-index: 1;
-  transition: visibility .3s, opacity .3s linear;
+  transition: all .5s;
 }
 
 .navigation_opened {
   visibility: visible;
   opacity: 1;
-  transition: visibility 0s, opacity .5s linear;
 }
 
 .navigation__close {

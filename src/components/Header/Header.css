@@ -96,4 +96,12 @@
   .header {
     padding: 0px 70px;
   }
+
+  .header-black {
+    justify-content: flex-start;
+  }
+
+  .header__button-menu {
+    display: none;
+  }
 }

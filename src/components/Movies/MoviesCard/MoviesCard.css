@@ -57,6 +57,13 @@
   opacity: 0.6;
 }
 
+.moviesCard__like_active {
+  background-image: url(../../../images/like-active.svg);
+}
+
+.moviesCard__like_save {
+  background-image: url(../../../images/close.svg);
+}
 
 /* Основной код для разрешения 320px */
 @media screen and (min-width: 768px) {
