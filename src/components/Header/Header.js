@@ -33,7 +33,7 @@ function Header() {
 
   return (
     <header className={`header ${history.location.pathname !== '/main' && 'header-black'}`}>
-      <img src={logo} className="header__logo" alt="Логотип" />
+      <Link to='/main' className="header__link-main"><img src={logo} className="header__logo" alt="Логотип" /></Link>
       {history.location.pathname === '/main' ?
         <>
           <div className="header__links">

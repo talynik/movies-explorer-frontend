@@ -16,6 +16,12 @@
   margin: 18px 0px;
 }
 
+.header__link-main {
+  margin: 0px;
+  padding: 0px;
+  cursor: pointer;
+}
+
 .header__link-registration {
   font-style: normal;
   font-weight: 500;
