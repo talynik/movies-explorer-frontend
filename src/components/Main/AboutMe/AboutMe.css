@@ -66,6 +66,11 @@
   color: #FFFFFF;
   text-decoration-line: none;
   margin: 0px 26px 0px 0px;
+  cursor: pointer;
+}
+
+.aboutMe__link:hover {
+  opacity: 0.7;
 }
 
 /* Основной код для разрешения 320px */

@@ -9,7 +9,8 @@ import Profile from '../Profile/Profile';
 import Login from '../Login/Login';
 import Register from '../Register/Register';
 import Footer from '../Footer/Footer';
-import {cards, saveCards} from '../../utils/utils'
+import {saveCards} from '../../utils/utils'
+import moviesApi from '../../utils/MoviesApi'
 
 function App() {
 
@@ -34,19 +35,35 @@ function App() {
   const [loggedIn, setLoggedIn] = React.useState(false);
   //пременная состояния загрузки
   const [isLoading, setIsLoading] = React.useState(false);
+  //информация о карточках
+  const [cards, setCards] = React.useState([]);
 
   function handleLoggedIn() {
     setLoggedIn(true);
   }
 
   //включение Preloader
-  function onLoading () {
+  /* function onLoading () {
     setIsLoading(true);
-  }
+  } */
 
   //выключение Preloader
   function ofLoading() {
     setIsLoading(false);
+  }
+
+  // загрузка данных с сервиса beatfilm-movies
+  function loadData() {
+    moviesApi
+      .getCards()
+      .then((cardData) => {
+        setCards(cardData);
+      })
+      .catch(err => console.log(err))
+      .finally(() => {
+        setIsLoading(false);
+      });
+    setIsLoading(true);
   }
 
   return (
@@ -62,7 +79,7 @@ function App() {
           <Route path='/movies'>
             <Movies
               cards={cards}
-              onLoading={onLoading}
+              onLoading={loadData}
               isLoading={isLoading}
               ofLoading={ofLoading}
             />
