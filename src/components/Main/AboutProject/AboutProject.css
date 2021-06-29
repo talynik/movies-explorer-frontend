@@ -1,0 +1,155 @@
+.aboutProject {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0px 18px;
+}
+
+.aboutProject__block {
+  display: flex;
+  flex-direction: column;
+  justify-content:space-between;
+  border-top: 1px solid #DADADA;
+  padding-top: 60px;
+}
+
+.aboutProject__stage {
+  order: 1;
+}
+
+.aboutProject__time {
+  order: 2;
+}
+
+.aboutProject__title {
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: -0.04em;
+  margin: 0px;
+}
+
+.aboutProject__subtitle {
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 16px;
+  margin: 16px 0px 56px 0px;
+}
+
+.aboutProject__shema {
+  display: grid;
+  grid-template-columns: 100px 184px;
+  grid-template-rows: 35px 23px;
+}
+
+.aboutProject__shema_type1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #3DDC84;
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 13px;
+  color: #000000;
+  margin: 0px;
+}
+
+.aboutProject__shema_type2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #303030;
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 13px;
+  margin: 0px;
+}
+
+.aboutProject__shema_type3 {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  font-weight: normal;
+  font-size: 11px;
+  line-height: 13px;
+  color: #A0A0A0;
+  margin: 0px;
+}
+
+/* Основной код для разрешения 320px */
+@media screen and (min-width: 768px) {
+  /* При разрешении выше 768px */
+  .aboutProject {
+    padding: 0px 50px;
+  }
+
+  .aboutProject__block {
+    flex-direction: row;
+    padding-top: 70px;
+  }
+
+  .aboutProject__stage {
+    width: 319px;
+    padding: 0px;
+  }
+
+  .aboutProject__time {
+    width: 319px;
+  }
+
+  .aboutProject__title {
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  .aboutProject__subtitle {
+    font-size: 12px;
+    line-height: 18px;
+    margin: 22px 0px 93px 0px;
+  }
+
+  .aboutProject__shema {
+    grid-template-columns: 140px 528px;
+    grid-template-rows: 36px 31px;
+  }
+
+  .aboutProject__shema_type1 {
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .aboutProject__shema_type2 {
+    font-size: 14px;
+    line-height: 17px;
+  }
+
+  .aboutProject__shema_type3 {
+    font-size: 14px;
+    line-height: 17px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  /* При разрешении выше 1280px */
+  .aboutProject {
+    padding: 0px 70px;
+  }
+
+  .aboutProject__stage {
+    width: 550px;
+  }
+
+  .aboutProject__time {
+    width: 550px;
+  }
+
+  .aboutProject__subtitle {
+    font-size: 14px;
+    line-height: 20px;
+    margin: 26px 0px 110px 0px;
+  }
+
+  .aboutProject__shema {
+    grid-template-columns: 228px 912px;
+  }
+}

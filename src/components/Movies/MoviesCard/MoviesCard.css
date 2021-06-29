@@ -1,0 +1,109 @@
+.moviesCard {
+  background: #222222;
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.08);
+  border-radius: 6px;
+}
+
+.moviesCard__image {
+  width: 100%;
+  min-height: 168px;
+  max-height: 168px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.moviesCard__group {
+  display: flex;
+  justify-content: space-between;
+  max-width: 100%;
+  margin: 14px 10px 0px 14px;
+}
+
+.moviesCard__text {
+  display: flex;
+  flex-direction: column;
+}
+
+.moviesCard__name {
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 15px;
+  margin: 0px;
+}
+
+.moviesCard__time {
+  font-weight: normal;
+  font-size: 10px;
+  line-height: 12px;
+  color: #8B8B8B;
+  margin: 14px 0px 0px;
+}
+
+.moviesCard__like {
+  height: 12px;
+  width: 14px;
+  box-sizing: border-box;
+  background-color: transparent;
+  background-image: url(../../../images/like.svg);
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: none;
+  margin-left: 14px;
+  padding: 0px;
+  cursor: pointer;
+}
+
+.moviesCard__like:hover {
+  opacity: 0.6;
+}
+
+.moviesCard__like_active {
+  background-image: url(../../../images/like-active.svg);
+}
+
+.moviesCard__like_save {
+  background-image: url(../../../images/close.svg);
+}
+
+/* Основной код для разрешения 320px */
+@media screen and (min-width: 768px) {
+  /* При разрешении выше 768px */
+  .moviesCard__image {
+    min-height: 190px;
+    max-height: 190px;
+  }
+
+  .moviesCard__group {
+    margin: 14px 14px 0px 14px;
+  }
+
+  .moviesCard__name {
+    font-size: 13px;
+    line-height: 16px;
+  }
+
+  .moviesCard__time {
+    font-size: 11px;
+    line-height: 13px;
+    margin: 15px 0px 0px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  /* При разрешении выше 1280px */
+  .moviesCard__image {
+    min-height: 203px;
+    max-height: 203px;
+  }
+
+  .moviesCard__group {
+    display: flex;
+    justify-content: space-between;
+    max-width: 100%;
+    margin: 16px 16px 0px 16px;
+  }
+
+  .moviesCard__time {
+    margin: 17px 0px 0px;
+  }
+}
