@@ -10,7 +10,6 @@ import Login from '../Login/Login';
 import Register from '../Register/Register';
 import Footer from '../Footer/Footer';
 import {CurrentUserContext} from '../../contexts/CurrentUserContext';
-import {saveCards} from '../../utils/utils'
 import * as moviesApi from '../../utils/MoviesApi'
 import mainApi from '../../utils/MainApi'
 
@@ -41,6 +40,8 @@ function App() {
   const [isLoading, setIsLoading] = React.useState(false);
   //информация о карточках
   const [cards, setCards] = React.useState([]);
+  //информация о сохраненных карточках
+  const [saveCards, setSaveCards] = React.useState([]);
 
   function handleLoggedIn() {
     setLoggedIn(true);
@@ -51,10 +52,10 @@ function App() {
     if (localStorage.getItem('jwt')) {
       mainApi
         .getUserInfo()
-        .then(() => {
+        .then((data) => {
           setLoggedIn(true);
           loadData();
-          history.push('/movies');
+          history.replace('/movies');
         })
         .catch(err => console.log(err));
     }
@@ -115,6 +116,17 @@ function App() {
       })
       .catch(err => console.log(err));
 
+    mainApi
+      .getCard()
+      .then((cardData) => {
+        setSaveCards(cardData.data);
+      })
+      .catch(err => console.log(err))
+      .finally(() => {
+        setIsLoading(false);
+      });
+    setIsLoading(true);
+
     moviesApi
       .getCards()
       .then((cardData) => {
@@ -141,6 +153,34 @@ function App() {
     setIsLoading(true);
   }
 
+  // добавление новой карточки
+  function handleSaveMovies(card) {
+    mainApi
+      .addMovies(card)
+      .then((newCard) => {
+        setCards([newCard.data, ...cards]);
+      })
+      .catch(err=>console.log(err))
+      .finally(() => {
+        setIsLoading(false);
+      });
+    setIsLoading(true);
+  }
+
+  // удаление карточки
+  function handleDeleteMovies(card) {
+    mainApi
+      .removeCard(card._id)
+      .then(() => {
+        setCards((state) => state.filter((c) => c._id !== card._id));
+      })
+      .catch(err => console.log(err))
+      .finally(() => {
+        setIsLoading(false);
+      });
+    setIsLoading(true);
+  }
+
   return (
     <CurrentUserContext.Provider value={currentUser}>
       <div className="app">
@@ -154,22 +194,30 @@ function App() {
 
             <ProtectedRoute path='/movies'
               component={Movies}
+              loggedIn={loggedIn}
               onLoading={loadData}
               isLoading={isLoading}
               cards={cards}
+              saveMovies={handleSaveMovies}
+              deleteMovies={handleDeleteMovies}
             />
 
             <ProtectedRoute path='/savedmovies'
               component={SavedMovies}
+              loggedIn={loggedIn}
+              // onLoading={loadData}
+              isLoading={isLoading}
               cards={saveCards}
+              saveMovies={handleSaveMovies}
+              deleteMovies={handleDeleteMovies}
             />
 
-            <Route path='/profile'>
-              <Profile
-                onUpdateUser={handleUpdateUser}
-                exit={handleExit}
-              />
-            </Route>
+            <ProtectedRoute path='/profile'
+              component={Profile}
+              loggedIn={loggedIn}
+              onUpdateUser={handleUpdateUser}
+              exit={handleExit}
+            />
 
             <Route path='/signin'>
               <Login

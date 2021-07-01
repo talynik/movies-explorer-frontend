@@ -4,7 +4,7 @@ import SearchForm from './SearchForm/SearchForm';
 import FilterCheckbox from './FilterCheckbox/FilterCheckbox';
 import MoviesCardList from './MoviesCardList/MoviesCardList'
 
-function Movies({cards, onLoading, isLoading, ofLoading}) {
+function Movies({cards, onLoading, isLoading, deleteMovies, saveMovies}) {
 
   return (
     <section className="movies">
@@ -15,6 +15,8 @@ function Movies({cards, onLoading, isLoading, ofLoading}) {
       <MoviesCardList
         isLoading={isLoading}
         cards={cards}
+        deleteMovies={deleteMovies}
+        saveMovies={saveMovies}
       />
       <button className="movies__button" type="button" aria-label="Ещё">Ещё</button>
     </section>

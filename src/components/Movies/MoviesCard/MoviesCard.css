@@ -4,6 +4,15 @@
   border-radius: 6px;
 }
 
+.moviesCard__link {
+  text-decoration-line: none;
+  cursor: pointer;
+}
+
+.moviesCard__link:hover {
+  opacity: 0.7;
+}
+
 .moviesCard__image {
   width: 100%;
   min-height: 168px;

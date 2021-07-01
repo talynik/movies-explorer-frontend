@@ -73,18 +73,18 @@ class MainApi{
     .then(this._onError)
   }
 
-    // изменение статуса лайка
+    /* // сохранение фильма
   changeLikeCardStatus(id, like) {
     return fetch(`${this._url}/cards/${id}/likes`, {
       method: like ? 'PUT' : 'DELETE',
       headers: this._headers,
     })
     .then(this._onError)
-  }
+  } */
 
     //загрузка карточек с сервера
   getCard(){
-    return fetch(`${this._url}/cards/`, {
+    return fetch(`${this._url}/movies`, {
       method: "GET",
       headers: this._headers,
     })
@@ -92,8 +92,8 @@ class MainApi{
   }
 
     //добавление новой карточки
-  addCard(data){
-    return fetch(`${this._url}/cards`, {
+  addMovies(data){
+    return fetch(`${this._url}/movies`, {
       method: 'POST',
       headers: this._headers,
       body: JSON.stringify(data)

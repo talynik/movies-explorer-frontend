@@ -1,30 +1,46 @@
 import React from 'react';
-// import {useHistory} from 'react-router-dom';
+import {useHistory} from 'react-router-dom';
+import {CurrentUserContext} from '../../../contexts/CurrentUserContext';
 
-function MoviesCard({card, /* onCardLike */}) {
+function MoviesCard({card, deleteMovies, saveMovies}) {
 
-  // const history = useHistory();
+  const history = useHistory();
 
-/*   let activLike = '';
-  history.location.pathname === '/savedmovies' ? activLike = 'moviesCard__like_save' : activLike = 'moviesCard__like_active';
+  //информация о профиле
+  const currentUser = React.useContext(CurrentUserContext);
 
-  // Определяем, есть ли у карточки лайк, поставленный текущим пользователем
-const isLiked = card.like === 1;
+  let activLike = '';
+  let trailer = '';
+  let image = '';
+  if(history.location.pathname === '/savedmovies') {
+    activLike = 'moviesCard__like_save';
+    trailer = card.trailer;
+    image = card.image;
+  } else {
+    activLike = 'moviesCard__like_active';
+    trailer = card.trailerLink;
+    image = `https://api.nomoreparties.co${card.image.url}`;
+  }
 
-function handleLikeClick() {
-  onCardLike(card);
-} */
+  // Определяем, являемся ли мы владельцем текущей карточки
+  const isLiked = card.owner === currentUser._id;
+
+  function handleLikeClick() {
+    isLiked ? deleteMovies(card) : saveMovies(card);
+  } 
 
   return (
     <li className="moviesCard">
-      <img className="moviesCard__image" src={`https://api.nomoreparties.co${card.image.url}`} alt={card.nameRU} />
-        <div className="moviesCard__group">
-          <div className="moviesCard__text">
-            <h2 className="moviesCard__name">{card.nameRU}</h2>
-            <h3 className="moviesCard__time">{card.duration}</h3>
-          </div>
-          {/* <button className={`moviesCard__like ${isLiked && activLike}`} type="button" aria-label="Нравится" onClick={handleLikeClick}></button> */}
+      <a className="moviesCard__link" href={trailer} target>
+        <img className="moviesCard__image" src={image} alt={card.nameRU}></img>
+      </a>
+      <div className="moviesCard__group">
+        <div className="moviesCard__text">
+          <h2 className="moviesCard__name">{card.nameRU}</h2>
+          <h3 className="moviesCard__time">{card.duration}</h3>
         </div>
+        <button className={`moviesCard__like ${isLiked && activLike}`} type="button" aria-label="Нравится" onClick={handleLikeClick}></button>
+      </div>
     </li>
   );
 }
