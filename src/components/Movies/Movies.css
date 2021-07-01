@@ -1,6 +1,7 @@
 .movies {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   margin: 0px 10px;
 }
 

@@ -18,7 +18,7 @@ function Register({identification}) {
       link='/signin'
       linkText='Войти'
       name={name}
-      // identification={identification}
+      identification={identification}
     >
       <p className="signForm__placeholder">Имя</p>
       <input  autoComplete="off" type="text" id="name" name="name" className="signForm__input" required value={name} onChange={handleChangeName}/>

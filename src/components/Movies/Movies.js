@@ -10,11 +10,10 @@ function Movies({cards, onLoading, isLoading, ofLoading}) {
     <section className="movies">
       <SearchForm
         onLoading={onLoading}
-        isLoading={isLoading}
-        ofLoading={ofLoading}
       />
       <FilterCheckbox/>
       <MoviesCardList
+        isLoading={isLoading}
         cards={cards}
       />
       <button className="movies__button" type="button" aria-label="Ещё">Ещё</button>

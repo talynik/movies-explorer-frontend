@@ -2,7 +2,7 @@ import React from 'react';
 import {withRouter} from 'react-router-dom';
 import SignForm from '../SignForm/SignForm'
 
-function Login() {
+function Login({identification}) {
 
   return (
     <SignForm
@@ -11,7 +11,7 @@ function Login() {
       question='Ещё не зарегистрированы?'
       link='/signup'
       linkText='Регистрация'
-      // identification={identification}
+      identification={identification}
     >
     </SignForm>
   );
