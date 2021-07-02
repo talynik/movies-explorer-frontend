@@ -61,6 +61,22 @@ function App() {
     }
   }, [history])
 
+  //проверка наличия базы фильмов и уё загрузка
+  React.useEffect(() => {
+    if (!localStorage.getItem('movies')) {
+      moviesApi
+      .getCards()
+      .then((cardData) => {
+        setCards(cardData);
+      })
+      .catch(err => console.log(err))
+      .finally(() => {
+        setIsLoading(false);
+      });
+    setIsLoading(true);
+    }
+  }, [history])
+
   //авторизация пользователя
   function authorization(user) {
     mainApi
@@ -127,16 +143,16 @@ function App() {
       });
     setIsLoading(true);
 
-    moviesApi
-      .getCards()
-      .then((cardData) => {
-        setCards(cardData);
-      })
-      .catch(err => console.log(err))
-      .finally(() => {
-        setIsLoading(false);
-      });
-    setIsLoading(true);
+    // moviesApi
+    //   .getCards()
+    //   .then((cardData) => {
+    //     setCards(cardData);
+    //   })
+    //   .catch(err => console.log(err))
+    //   .finally(() => {
+    //     setIsLoading(false);
+    //   });
+    // setIsLoading(true);
   }
 
   //обновление данных о пользователе
@@ -155,10 +171,24 @@ function App() {
 
   // добавление новой карточки
   function handleSaveMovies(card) {
+    const saveCard = {
+      country: card.country,
+      director: card.director,
+      duration: card.duration,
+      year: card.year,
+      description: card.description,
+      image: `https://api.nomoreparties.co${card.image.url}`,
+      trailer: card.trailerLink,
+      nameRU: card.nameRU,
+      nameEN: card.nameEN,
+      thumbnail: `https://api.nomoreparties.co${card.image.formats.thumbnail.url}`,
+      movieId: card.id
+    }
+
     mainApi
-      .addMovies(card)
+      .addMovies(saveCard)
       .then((newCard) => {
-        setCards([newCard.data, ...cards]);
+        // setCards([newCard.data, ...cards]);
       })
       .catch(err=>console.log(err))
       .finally(() => {

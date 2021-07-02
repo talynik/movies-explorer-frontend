@@ -14,17 +14,16 @@
   margin: 70px 0px 80px 0px;
 }
 
-.profile__list {
-  margin: 0px;
-  padding: 0px;
+.profile__form {
   width: 100%;
-  list-style: none;
 }
 
 .profile__data {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  align-items: center;
+  width: 100%;
   padding: 17px 0px 16px;
 }
 
@@ -34,23 +33,37 @@
 }
 
 .profile__name {
+  width: 20%;
   font-weight: 500;
   font-size: 11px;
   line-height: 13px;
   margin: 0px;
 }
 
-.profile__info {
+.profile__input {
+  text-align: right;
+  border: 0;
+  width: 100%;
+  box-sizing: border-box;
+  background-color: transparent;
+  padding: 5px 0px 10px 0px;
+  margin: 0px;
+  padding: 0px;
   font-weight: normal;
   font-size: 11px;
   line-height: 13px;
-  margin: 0px;
+  color: #FFFFFF;
 }
 
 .profile__link {
   font-size: 12px;
   line-height: 15px;
   text-decoration-line: none;
+  cursor: pointer;
+}
+
+.profile__link:hover {
+  opacity: 0.8;
 }
 
 .profile__link_edit {

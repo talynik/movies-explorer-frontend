@@ -79,6 +79,11 @@
   opacity: 0.8;
 }
 
+.signForm__button_disabled {
+  background: #F8F8F8;
+  color: #C2C2C2;
+}
+
 .signForm__question {
   font-weight: normal;
   font-size: 12px;
