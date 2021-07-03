@@ -20,7 +20,7 @@
 
 .searchForm__input {
   border: 0;
-  max-width: 70%;
+  min-width: 70%;
   height: 46px;
   box-sizing: border-box;
   background-color: #2F2F2F;

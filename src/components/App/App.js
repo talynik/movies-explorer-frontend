@@ -38,6 +38,8 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState({});
   //пременная состояния загрузки
   const [isLoading, setIsLoading] = React.useState(false);
+  //информация о фильмах
+  // const [cardsMovies, setCardsMovies] = React.useState([]);
   //информация о карточках
   const [cards, setCards] = React.useState([]);
   //информация о сохраненных карточках
@@ -52,7 +54,7 @@ function App() {
     if (localStorage.getItem('jwt')) {
       mainApi
         .getUserInfo()
-        .then((data) => {
+        .then(() => {
           setLoggedIn(true);
           loadData();
           history.replace('/movies');
@@ -61,21 +63,22 @@ function App() {
     }
   }, [history])
 
-  //проверка наличия базы фильмов и уё загрузка
-  React.useEffect(() => {
-    if (!localStorage.getItem('movies')) {
-      moviesApi
-      .getCards()
-      .then((cardData) => {
-        setCards(cardData);
-      })
-      .catch(err => console.log(err))
-      .finally(() => {
-        setIsLoading(false);
-      });
-    setIsLoading(true);
-    }
-  }, [history])
+  //проверка наличия базы фильмов и её загрузка
+  // React.useEffect(() => {
+  //   if (!localStorage.getItem('movies')) {
+  //     moviesApi
+  //     .getCards()
+  //     .then((cardData) => {
+  //       localStorage.setItem('movies', cardData);
+  //       setCards(cardData);
+  //     })
+  //     .catch(err => console.log(err))
+  //     .finally(() => {
+  //       setIsLoading(false);
+  //     });
+  //   setIsLoading(true);
+  //   }
+  // }, [history])
 
   //авторизация пользователя
   function authorization(user) {
@@ -123,7 +126,7 @@ function App() {
     setLoggedIn(false);
   }
 
-  // загрузка данных о пользователе и с сервиса beatfilm-movies
+  // загрузка данных
   function loadData() {
     mainApi
       .getUserInfo()
@@ -142,20 +145,9 @@ function App() {
         setIsLoading(false);
       });
     setIsLoading(true);
-
-    // moviesApi
-    //   .getCards()
-    //   .then((cardData) => {
-    //     setCards(cardData);
-    //   })
-    //   .catch(err => console.log(err))
-    //   .finally(() => {
-    //     setIsLoading(false);
-    //   });
-    // setIsLoading(true);
   }
 
-  //обновление данных о пользователе
+  // обновление данных о пользователе
   function handleUpdateUser(newUserData) {
     mainApi
       .setUserInfo(newUserData)
@@ -163,6 +155,28 @@ function App() {
         setCurrentUser(userData.data);
       })
       .catch(err=>console.log(err))
+      .finally(() => {
+        setIsLoading(false);
+      });
+    setIsLoading(true);
+  }
+
+  // function handleSearchMovies(searchMovies) {
+  //   const foundCards = [];
+  //   cardsMovies.map(movie => 
+  //     movie.nameRU === searchMovies && foundCards.push(movie)
+  //   );
+  //   setCards(foundCards);
+  // }
+
+  // загрузка данных с сервиса beatfilm-movies и поиск фильмов
+  function loadDataMovies(searchMovies) {
+    moviesApi
+      .getCards()
+      .then((cardData) => {
+        setCards(cardData);
+      })
+      .catch(err => console.log(err))
       .finally(() => {
         setIsLoading(false);
       });
@@ -188,7 +202,7 @@ function App() {
     mainApi
       .addMovies(saveCard)
       .then((newCard) => {
-        // setCards([newCard.data, ...cards]);
+        setCards([newCard.data, ...cards]);
       })
       .catch(err=>console.log(err))
       .finally(() => {
@@ -200,16 +214,16 @@ function App() {
   // удаление карточки
   function handleDeleteMovies(card) {
     mainApi
-      .removeCard(card._id)
-      .then(() => {
-        setCards((state) => state.filter((c) => c._id !== card._id));
-      })
-      .catch(err => console.log(err))
-      .finally(() => {
-        setIsLoading(false);
-      });
-    setIsLoading(true);
-  }
+    .removeCard(card._id)
+    .then(() => {
+      setSaveCards((state) => state.filter((c) => c._id !== card._id));
+    })
+    .catch(err => console.log(err))
+    .finally(() => {
+      setIsLoading(false);
+    });
+  setIsLoading(true);
+}
 
   return (
     <CurrentUserContext.Provider value={currentUser}>
@@ -225,7 +239,7 @@ function App() {
             <ProtectedRoute path='/movies'
               component={Movies}
               loggedIn={loggedIn}
-              onLoading={loadData}
+              onLoading={loadDataMovies}
               isLoading={isLoading}
               cards={cards}
               saveMovies={handleSaveMovies}
@@ -235,7 +249,7 @@ function App() {
             <ProtectedRoute path='/savedmovies'
               component={SavedMovies}
               loggedIn={loggedIn}
-              // onLoading={loadData}
+              // onLoading={loadDataMovies}
               isLoading={isLoading}
               cards={saveCards}
               saveMovies={handleSaveMovies}
