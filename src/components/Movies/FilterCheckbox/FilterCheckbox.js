@@ -1,7 +1,6 @@
 import React from 'react';
 
 function FilterCheckbox({checked, handleChecked}) {
-
   
   return (
     <section className="filterCheckbox">

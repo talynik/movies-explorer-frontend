@@ -148,10 +148,6 @@ function App() {
     setIsLoading(true);
   }
 
-  // function filterSaveMovies() {
-  //   setSaveCards((state) => state.filter((c) => c.owner === currentUser._id));
-  // }
-
   // обновление данных о пользователе
   function handleUpdateUser(newUserData) {
     mainApi
@@ -166,26 +162,24 @@ function App() {
     setIsLoading(true);
   }
 
-  // function handleSearchMovies(searchMovies) {
-  //   const foundCards = [];
-  //   cardsMovies.map(movie => 
-  //     movie.nameRU === searchMovies && foundCards.push(movie)
-  //   );
-  //   setCards(foundCards);
-  // }
-
   // загрузка данных с сервиса beatfilm-movies и поиск фильмов
-  function loadDataMovies(searchMovies) {
+  function loadDataMovies(name) {
     moviesApi
       .getCards()
       .then((cardData) => {
-        setCards(cardData);
+        name !== "" && setCards(cardData.filter(card => card.nameRU.toLowerCase().includes(name.toLowerCase())));
+        // setCards(cardData);
       })
       .catch(err => console.log(err))
       .finally(() => {
         setIsLoading(false);
       });
     setIsLoading(true);
+  }
+
+  // функция фильтра по имени для избранных фильмов
+  function filterName(name) {
+    name !== "" && setSaveCards(saveCards.filter(card => card.nameRU.toLowerCase().includes(name.toLowerCase())))
   }
 
   // добавление новой карточки
@@ -254,7 +248,7 @@ function App() {
             <ProtectedRoute path='/savedmovies'
               component={SavedMovies}
               loggedIn={loggedIn}
-              // onLoading={loadDataMovies}
+              onLoading={filterName}
               isLoading={isLoading}
               cards={saveCards.filter(card => card.owner === currentUser._id)}
               saveMovies={handleSaveMovies}

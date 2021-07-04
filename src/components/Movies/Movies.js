@@ -14,8 +14,8 @@ function Movies({cards, onLoading, isLoading, deleteMovies, saveMovies}) {
   }
 
   let movies = [];
-  let filterChecked = cards.filter(card => card.duration < 40);
-  checked ? movies = filterChecked : movies = cards;
+
+  checked ? movies = cards.filter(card => card.duration < 40) : movies = cards;
   
   return (
     <section className="movies">

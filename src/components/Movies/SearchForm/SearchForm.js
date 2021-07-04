@@ -17,7 +17,7 @@ function SearchForm({onLoading}) {
   return (
     <section className="searchForm">
       <form className="searchForm__form">
-        <input  autoComplete="off" id="search" name="search" className="searchForm__input" placeholder="Фильм" required  value={searchMovie} onChange={handleChangeSearchMovie}/>
+        <input  autoComplete="off" id="search" name="search" className="searchForm__input" placeholder="Фильм" required minLength="1" value={searchMovie} onChange={handleChangeSearchMovie}/>
         <button className="searchForm__button" type="submit" aria-label="Найти" onClick={handleSubmit}>Найти</button>
       </form>
     </section>
