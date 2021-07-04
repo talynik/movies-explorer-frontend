@@ -4,7 +4,7 @@ import ProtectedRoute from '../ProtectedRoute';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
 import Movies from '../Movies/Movies';
-import SavedMovies from '../SavedMovies/SavadMovies';
+import SavedMovies from '../SavedMovies/SavedMovies';
 import Profile from '../Profile/Profile';
 import Login from '../Login/Login';
 import Register from '../Register/Register';
@@ -139,6 +139,7 @@ function App() {
       .getCard()
       .then((cardData) => {
         setSaveCards(cardData.data);
+        // filterSaveMovies();
       })
       .catch(err => console.log(err))
       .finally(() => {
@@ -146,6 +147,10 @@ function App() {
       });
     setIsLoading(true);
   }
+
+  // function filterSaveMovies() {
+  //   setSaveCards((state) => state.filter((c) => c.owner === currentUser._id));
+  // }
 
   // обновление данных о пользователе
   function handleUpdateUser(newUserData) {
@@ -214,7 +219,7 @@ function App() {
   // удаление карточки
   function handleDeleteMovies(card) {
     mainApi
-    .removeCard(card._id)
+    .removeMovies(card._id)
     .then(() => {
       setSaveCards((state) => state.filter((c) => c._id !== card._id));
     })
@@ -251,7 +256,7 @@ function App() {
               loggedIn={loggedIn}
               // onLoading={loadDataMovies}
               isLoading={isLoading}
-              cards={saveCards}
+              cards={saveCards.filter(card => card.owner === currentUser._id)}
               saveMovies={handleSaveMovies}
               deleteMovies={handleDeleteMovies}
             />

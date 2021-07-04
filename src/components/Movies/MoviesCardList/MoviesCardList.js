@@ -1,6 +1,6 @@
 import React from 'react';
-import Preloader from '../Preloader/Preloader'
-import MoviesCard from '../MoviesCard/MoviesCard'
+import Preloader from '../Preloader/Preloader';
+import MoviesCard from '../MoviesCard/MoviesCard';
 
 function MoviesCardList({isLoading, cards, deleteMovies, saveMovies}) {
 

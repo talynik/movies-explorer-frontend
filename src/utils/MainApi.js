@@ -65,7 +65,7 @@ class MainApi{
   }
 
     //удаление карточки
-  removeCard(id){
+  removeMovies(id){
     return fetch(`${this._url}/movies/${id}`, {
       method: "DELETE",
       headers: this._headers,
