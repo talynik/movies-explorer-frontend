@@ -1,7 +1,7 @@
 .navigation {
   display: flex;
   flex-direction: column;
-  background-color: #202020;
+  background: #202020;
   position: absolute;
   top: 0;
   right: 0;
@@ -11,6 +11,10 @@
   opacity: 0;
   z-index: 1;
   transition: all .5s;
+}
+
+.header-main {
+  background: #073042;
 }
 
 .navigation_opened {

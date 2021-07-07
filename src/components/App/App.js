@@ -205,7 +205,10 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <div className="app">
         <div className="app__content">
-          {onDispleyHeader && <Header/>}
+          {onDispleyHeader &&
+          <Header
+            loggedIn={loggedIn}
+          />}
 
           <Switch>
             <Route path='/main'>

@@ -1,7 +1,10 @@
 import React from 'react';
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 
 function Navigation({isOpen, isClose, handleEscapeClose, handleOverleyClose}) {
+
+  const history = useHistory();
+
   // закрытие на ESC
   React.useEffect(() => {
     if (!isOpen) {
@@ -12,7 +15,7 @@ function Navigation({isOpen, isClose, handleEscapeClose, handleOverleyClose}) {
   }, [handleEscapeClose, isOpen, isClose]);
 
   return (
-    <section className={`navigation ${isOpen && 'navigation_opened'}`} onClick={handleOverleyClose}>
+    <section className={`navigation ${isOpen && 'navigation_opened'} ${history.location.pathname === '/main' && 'header-main'}`} onClick={handleOverleyClose}>
       <button className="navigation__close" type="button" aria-label="Закрыть" onClick={isClose}></button>
       <div className="navigation__links">
         <ul className="navigation__list">

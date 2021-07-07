@@ -3,7 +3,7 @@ import {Link, useHistory, withRouter} from "react-router-dom";
 import Navigation from '../Navigation/Navigation'
 import logo from '../../logo.svg';
 
-function Header() {
+function Header({loggedIn}) {
 
   const history = useHistory();
 
@@ -34,7 +34,7 @@ function Header() {
   return (
     <header className={`header ${history.location.pathname !== '/main' && 'header-black'}`}>
       <Link to='/main' className="header__link-main"><img src={logo} className="header__logo" alt="Логотип" /></Link>
-      {history.location.pathname === '/main' ?
+      {!loggedIn ?
         <>
           <div className="header__links">
             <Link to='/signup' className="header__link-registration">Регистрация</Link>
