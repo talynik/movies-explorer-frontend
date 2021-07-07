@@ -1,30 +1,34 @@
 import React from 'react';
 import {useHistory} from 'react-router-dom';
-import {CurrentUserContext} from '../../../contexts/CurrentUserContext';
+// import {CurrentUserContext} from '../../../contexts/CurrentUserContext';
 
-function MoviesCard({card, deleteMovies, saveMovies}) {
+function MoviesCard({card, /* saveCards,  */deleteMovies, saveMovies}) {
 
   const history = useHistory();
+  //переменная массива идентификаторов сохраненных карточек
+  // const [saveCardsId, setSaveCardsId] = React.useState([]);
 
-  //информация о профиле
-  const currentUser = React.useContext(CurrentUserContext);
+  // setSaveCardsId(saveCards.map(saveCards.movieId));
 
+  let isLiked = false;
   let activLike = '';
   let trailer = '';
   let image = '';
   
+  
   if(history.location.pathname === '/savedmovies') {
+    isLiked = true;
     activLike = 'moviesCard__like_save';
     trailer = card.trailer;
     image = card.image;
   } else {
+    // saveCards.map(i => i.movieId === card.id && isLiked = true);
+    // setSaveCardsId(await saveCards.map(saveCards.movieId));
+    // isLiked = saveCardsId.some(i => i === card.id);
     activLike = 'moviesCard__like_active';
     trailer = card.trailerLink;
     image = `https://api.nomoreparties.co${card.image.url}`;
   }
-
-  // Определяем, являемся ли мы владельцем текущей карточки
-  const isLiked = card.owner === currentUser._id;
 
   function handleLikeClick() {
     isLiked ? deleteMovies(card) : saveMovies(card);

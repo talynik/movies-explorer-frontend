@@ -45,10 +45,6 @@ function App() {
   //информация о сохраненных карточках
   const [saveCards, setSaveCards] = React.useState([]);
 
-  function handleLoggedIn() {
-    setLoggedIn(true);
-  }
-
   //проверка наличия токена и загрузка данных
   React.useEffect(() => {
     if (localStorage.getItem('jwt')) {
@@ -56,29 +52,12 @@ function App() {
         .getUserInfo()
         .then(() => {
           setLoggedIn(true);
-          loadData();
           history.replace('/movies');
+          loadData();
         })
         .catch(err => console.log(err));
     }
   }, [history])
-
-  //проверка наличия базы фильмов и её загрузка
-  // React.useEffect(() => {
-  //   if (!localStorage.getItem('movies')) {
-  //     moviesApi
-  //     .getCards()
-  //     .then((cardData) => {
-  //       localStorage.setItem('movies', cardData);
-  //       setCards(cardData);
-  //     })
-  //     .catch(err => console.log(err))
-  //     .finally(() => {
-  //       setIsLoading(false);
-  //     });
-  //   setIsLoading(true);
-  //   }
-  // }, [history])
 
   //авторизация пользователя
   function authorization(user) {
@@ -139,7 +118,6 @@ function App() {
       .getCard()
       .then((cardData) => {
         setSaveCards(cardData.data);
-        // filterSaveMovies();
       })
       .catch(err => console.log(err))
       .finally(() => {
@@ -168,7 +146,6 @@ function App() {
       .getCards()
       .then((cardData) => {
         name !== "" && setCards(cardData.filter(card => card.nameRU.toLowerCase().includes(name.toLowerCase())));
-        // setCards(cardData);
       })
       .catch(err => console.log(err))
       .finally(() => {
@@ -201,7 +178,7 @@ function App() {
     mainApi
       .addMovies(saveCard)
       .then((newCard) => {
-        setCards([newCard.data, ...cards]);
+        setSaveCards([newCard.data, ...saveCards]);
       })
       .catch(err=>console.log(err))
       .finally(() => {
@@ -241,6 +218,7 @@ function App() {
               onLoading={loadDataMovies}
               isLoading={isLoading}
               cards={cards}
+              saveCards={saveCards}
               saveMovies={handleSaveMovies}
               deleteMovies={handleDeleteMovies}
             />
@@ -250,7 +228,7 @@ function App() {
               loggedIn={loggedIn}
               onLoading={filterName}
               isLoading={isLoading}
-              cards={saveCards.filter(card => card.owner === currentUser._id)}
+              cards={saveCards}
               saveMovies={handleSaveMovies}
               deleteMovies={handleDeleteMovies}
             />
@@ -258,13 +236,12 @@ function App() {
             <ProtectedRoute path='/profile'
               component={Profile}
               loggedIn={loggedIn}
-              onUpdateUser={handleUpdateUser}
-              exit={handleExit}
+              editProfile={handleUpdateUser}
+              handleExit={handleExit}
             />
 
             <Route path='/signin'>
               <Login
-                handleLoggedIn={handleLoggedIn}
                 identification={authorization}
               />
             </Route>
