@@ -192,6 +192,7 @@ function App() {
       .addMovies(saveCard)
       .then((newCard) => {
         setSaveCards([newCard.data, ...saveCards]);
+        setSaveCardsId([newCard.data.movieId, ...saveCardsId])
       })
       .catch(err=>console.log(err))
       .finally(() => {
@@ -202,10 +203,13 @@ function App() {
 
   // удаление карточки
   function handleDeleteMovies(card) {
+    let id = '';
+    history.location.pathname === '/savedmovies' ? id = card._id : id = saveCards.filter((c) => c.movieId === card.id)[0]._id;
     mainApi
-    .removeMovies(card._id)
+    .removeMovies(id)
     .then(() => {
-      setSaveCards((state) => state.filter((c) => c._id !== card._id));
+      setSaveCards((state) => state.filter((c) => c._id !== id));
+      setSaveCardsId(saveCardsId.filter((c) => c !== card.id));
     })
     .catch(err => console.log(err))
     .finally(() => {

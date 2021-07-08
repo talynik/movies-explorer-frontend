@@ -10,7 +10,6 @@ function MoviesCard({card, saveCardsId, deleteMovies, saveMovies}) {
   let trailer = '';
   let image = '';
   
-  
   if(history.location.pathname === '/savedmovies') {
     isLiked = true;
     activLike = 'moviesCard__like_save';

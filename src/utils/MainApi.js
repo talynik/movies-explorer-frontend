@@ -73,15 +73,6 @@ class MainApi{
     .then(this._onError)
   }
 
-    /* // сохранение фильма
-  changeLikeCardStatus(id, like) {
-    return fetch(`${this._url}/cards/${id}/likes`, {
-      method: like ? 'PUT' : 'DELETE',
-      headers: this._headers,
-    })
-    .then(this._onError)
-  } */
-
     //загрузка карточек с сервера
   getCard(){
     return fetch(`${this._url}/movies`, {
