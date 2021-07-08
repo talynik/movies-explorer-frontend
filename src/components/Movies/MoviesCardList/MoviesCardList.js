@@ -2,7 +2,7 @@ import React from 'react';
 import Preloader from '../Preloader/Preloader';
 import MoviesCard from '../MoviesCard/MoviesCard';
 
-function MoviesCardList({isLoading, cards, saveCards, deleteMovies, saveMovies}) {
+function MoviesCardList({isLoading, cards, saveCardsId, deleteMovies, saveMovies}) {
 
   return (
     <section className="moviesCardList">
@@ -11,7 +11,7 @@ function MoviesCardList({isLoading, cards, saveCards, deleteMovies, saveMovies})
         {cards.map((card) => (
           <MoviesCard
             card={card}
-            saveCards={saveCards}
+            saveCardsId={saveCardsId}
             deleteMovies={deleteMovies}
             saveMovies={saveMovies}
           />

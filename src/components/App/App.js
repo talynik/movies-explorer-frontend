@@ -32,20 +32,22 @@ function App() {
     history.location.pathname === '/savedmovies'
     );
 
-  //переменная состояния авторизации
+  // переменная состояния авторизации
   const [loggedIn, setLoggedIn] = React.useState(false);
-  //переменная состояния информации о пользователе
+  // переменная состояния информации о пользователе
   const [currentUser, setCurrentUser] = React.useState({});
-  //пременная состояния загрузки
+  // пременная состояния загрузки
   const [isLoading, setIsLoading] = React.useState(false);
-  //информация о фильмах
+  // информация о фильмах
   // const [cardsMovies, setCardsMovies] = React.useState([]);
-  //информация о карточках
+  // информация о карточках
   const [cards, setCards] = React.useState([]);
-  //информация о сохраненных карточках
+  // информация о сохраненных карточках
   const [saveCards, setSaveCards] = React.useState([]);
+  //переменная массива идентификаторов сохраненных карточек
+  const [saveCardsId, setSaveCardsId] = React.useState([]);
 
-  //проверка наличия токена и загрузка данных
+  // проверка наличия токена и загрузка данных
   React.useEffect(() => {
     if (localStorage.getItem('jwt')) {
       mainApi
@@ -58,6 +60,13 @@ function App() {
         .catch(err => console.log(err));
     }
   }, [history])
+
+  // проверка наличия данных карточек в LS
+  React.useEffect(() => {
+    if (localStorage.cards) {
+      setCards(JSON.parse(localStorage.cards))
+    }
+  }, [setCards])
 
   //авторизация пользователя
   function authorization(user) {
@@ -118,6 +127,7 @@ function App() {
       .getCard()
       .then((cardData) => {
         setSaveCards(cardData.data);
+        setSaveCardsId(cardData.data.map(i => i.movieId));
       })
       .catch(err => console.log(err))
       .finally(() => {
@@ -145,7 +155,10 @@ function App() {
     moviesApi
       .getCards()
       .then((cardData) => {
-        name !== "" && setCards(cardData.filter(card => card.nameRU.toLowerCase().includes(name.toLowerCase())));
+        if (name !== "") {
+          setCards(cardData.filter(card => card.nameRU.toLowerCase().includes(name.toLowerCase())));
+          localStorage.cards = JSON.stringify(cardData.filter(card => card.nameRU.toLowerCase().includes(name.toLowerCase())));
+        }
       })
       .catch(err => console.log(err))
       .finally(() => {
@@ -221,7 +234,7 @@ function App() {
               onLoading={loadDataMovies}
               isLoading={isLoading}
               cards={cards}
-              saveCards={saveCards}
+              saveCardsId={saveCardsId}
               saveMovies={handleSaveMovies}
               deleteMovies={handleDeleteMovies}
             />

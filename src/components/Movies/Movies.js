@@ -4,7 +4,7 @@ import SearchForm from './SearchForm/SearchForm';
 import FilterCheckbox from './FilterCheckbox/FilterCheckbox';
 import MoviesCardList from './MoviesCardList/MoviesCardList'
 
-function Movies({cards, saveCards, onLoading, isLoading, deleteMovies, saveMovies}) {
+function Movies({cards, saveCardsId, onLoading, isLoading, deleteMovies, saveMovies}) {
 
   // переменная состояния чекбокса короткометражек
   const [checked, setChecked] = React.useState(false);
@@ -29,7 +29,7 @@ function Movies({cards, saveCards, onLoading, isLoading, deleteMovies, saveMovie
       <MoviesCardList
         isLoading={isLoading}
         cards={movies}
-        saveCards={saveCards}
+        saveCardsId={saveCardsId}
         deleteMovies={deleteMovies}
         saveMovies={saveMovies}
       />

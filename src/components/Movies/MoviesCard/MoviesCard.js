@@ -1,14 +1,9 @@
 import React from 'react';
 import {useHistory} from 'react-router-dom';
-// import {CurrentUserContext} from '../../../contexts/CurrentUserContext';
 
-function MoviesCard({card, /* saveCards,  */deleteMovies, saveMovies}) {
+function MoviesCard({card, saveCardsId, deleteMovies, saveMovies}) {
 
   const history = useHistory();
-  //переменная массива идентификаторов сохраненных карточек
-  // const [saveCardsId, setSaveCardsId] = React.useState([]);
-
-  // setSaveCardsId(saveCards.map(saveCards.movieId));
 
   let isLiked = false;
   let activLike = '';
@@ -22,9 +17,7 @@ function MoviesCard({card, /* saveCards,  */deleteMovies, saveMovies}) {
     trailer = card.trailer;
     image = card.image;
   } else {
-    // saveCards.map(i => i.movieId === card.id && isLiked = true);
-    // setSaveCardsId(await saveCards.map(saveCards.movieId));
-    // isLiked = saveCardsId.some(i => i === card.id);
+    isLiked = saveCardsId.some(i => i === card.id);
     activLike = 'moviesCard__like_active';
     trailer = card.trailerLink;
     image = `https://api.nomoreparties.co${card.image.url}`;
