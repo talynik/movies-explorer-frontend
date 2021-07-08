@@ -13,10 +13,32 @@ function Movies({cards, saveCardsId, onLoading, isLoading, deleteMovies, saveMov
     checked ? setChecked(false) : setChecked(true)
   }
 
+  let maxCards = 0;
+  let plus = 0;
+  
+  function handleAddCards() {
+    plus = ++plus
+    handleMaxCards(plus)
+  }
+
+  window.addEventListener("resize", handleMaxCards(plus));
+
   let movies = [];
 
   checked ? movies = cards.filter(card => card.duration < 40) : movies = cards;
-  
+
+  function handleMaxCards(plus) {
+    if(document.documentElement.clientWidth >= 1280) {
+      maxCards = 12 + (3 * plus);
+    } else {
+      if(document.documentElement.clientWidth >= 768) {
+        maxCards = 8 + (2 * plus);
+      } else {
+        maxCards = 5 + (2 * plus);
+      }
+    }
+  }
+
   return (
     <section className="movies">
       <SearchForm
@@ -28,12 +50,12 @@ function Movies({cards, saveCardsId, onLoading, isLoading, deleteMovies, saveMov
       />
       <MoviesCardList
         isLoading={isLoading}
-        cards={movies}
+        cards={movies.slice(0, maxCards)}
         saveCardsId={saveCardsId}
         deleteMovies={deleteMovies}
         saveMovies={saveMovies}
       />
-      <button className="movies__button" type="button" aria-label="Ещё">Ещё</button>
+      <button className="movies__button" type="button" aria-label="Ещё" onClick={handleAddCards}>Ещё</button>
     </section>
   );
 }

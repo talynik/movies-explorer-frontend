@@ -9,6 +9,7 @@ import Profile from '../Profile/Profile';
 import Login from '../Login/Login';
 import Register from '../Register/Register';
 import Footer from '../Footer/Footer';
+import Error from '../Error/Error';
 import {CurrentUserContext} from '../../contexts/CurrentUserContext';
 import * as moviesApi from '../../utils/MoviesApi'
 import mainApi from '../../utils/MainApi'
@@ -71,11 +72,11 @@ function App() {
   //авторизация пользователя
   function authorization(user) {
     mainApi
-      .authorize(user)
+      .authorize({email: user.email, password: user.password})
       .then((data) => {
         localStorage.setItem('jwt', data.token);
-        setLoggedIn(true);
         loadData();
+        setLoggedIn(true);
         history.replace('/movies');
       })
       .catch(err=>console.log(err))
@@ -91,8 +92,8 @@ function App() {
       .register(newUser)
       .then((data) => {
         localStorage.setItem('jwt', data.token);
-        setLoggedIn(true);
         loadData();
+        setLoggedIn(true);
         history.replace('/movies');
         // setTitleInfoTooltip('Вы успешно зарегистрировались!');
         // setStatusTitleInfoTooltip(success);
@@ -112,6 +113,7 @@ function App() {
   function handleExit() {
     localStorage.removeItem('jwt');
     setLoggedIn(false);
+    history.replace('/main');
   }
 
   // загрузка данных
@@ -222,6 +224,7 @@ function App() {
     <CurrentUserContext.Provider value={currentUser}>
       <div className="app">
         <div className="app__content">
+
           {onDispleyHeader &&
           <Header
             loggedIn={loggedIn}
@@ -256,6 +259,7 @@ function App() {
             <ProtectedRoute path='/profile'
               component={Profile}
               loggedIn={loggedIn}
+              isLoading={isLoading}
               editProfile={handleUpdateUser}
               handleExit={handleExit}
             />
@@ -263,18 +267,22 @@ function App() {
             <Route path='/signin'>
               <Login
                 identification={authorization}
+                isLoading={isLoading}
               />
             </Route>
 
             <Route path='/signup'>
               <Register
                 identification={registration}
+                isLoading={isLoading}
               />
             </Route>
 
             <Route>
                 {loggedIn ? <Redirect to='/movies' /> : <Redirect to='/main' />}
             </Route>
+
+            <Error/>
 
           </Switch>
 

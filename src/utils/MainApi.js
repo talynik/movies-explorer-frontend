@@ -93,20 +93,13 @@ class MainApi{
   }
 }
 
-localStorage.setItem('jwt', "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGRlMTEyN2FiYTA5NDE5YzBkNDdmMmIiLCJpYXQiOjE2MjU1NDUwOTIsImV4cCI6MTYyNjE0OTg5Mn0.cggI9MlLADzFIQFrlwoyV0fzTd-7P9j03w5KObNIZeA");
-
 let jwt = localStorage.getItem('jwt');
 
 const mainApi = new MainApi({
-  url: 'http://localhost:3005', 
+  url: 'https://api.talynik.diploma.nomoredomains.club', 
   headers:{
     'Content-Type': 'application/json',
     'Authorization': `Bearer ${jwt}`
   }
 });
 export default mainApi;
-
-
-// https://api.talynik.diploma.nomoredomains.club
-
-// http://localhost:3005

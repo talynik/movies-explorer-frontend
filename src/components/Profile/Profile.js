@@ -1,10 +1,11 @@
 import React from 'react';
-import {Link, withRouter} from 'react-router-dom';
+import {withRouter} from 'react-router-dom';
+import Preloader from '../Preloader/Preloader';
 import formValidator from '../formValidator';
 import {validationEditProfile} from '../../utils/utils';
 import {CurrentUserContext} from '../../contexts/CurrentUserContext';
 
-function Profile({editProfile, handleExit}) {
+function Profile({editProfile, isLoading, handleExit}) {
 
   //информация о профиле
   const currentUser = React.useContext(CurrentUserContext);
@@ -52,12 +53,13 @@ function Profile({editProfile, handleExit}) {
           <input  autoComplete="off" type="email" id="login" name="login" className="profile__input" required placeholder={currentUser.email} value={login} onChange={handleChangeLogin}/>
         </div>  
           <span id="login-error" className="signForm__input-error"></span>
-      {edit && <button className='signForm__button' type="submit" aria-label="Войти" onClick={handleSubmit}>Сохраннить</button>}
+        {isLoading && <Preloader/>}
+        {edit && <button className='signForm__button' type="submit" aria-label="Войти" onClick={handleSubmit}>Сохраннить</button>}
       </form>
       {!edit &&
         <>
           <p className='profile__link profile__link_edit' onClick={handleEdit}>Редактировать</p>
-          <Link to='/main' className='profile__link profile__link_exit' onClick={handleExit}>Выйти из аккаунта</Link>
+          <p className='profile__link profile__link_exit' onClick={handleExit}>Выйти из аккаунта</p>
         </>
       }
     </section>

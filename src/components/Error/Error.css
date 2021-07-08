@@ -1,0 +1,68 @@
+.error {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100vh;
+  margin: 0px 10px;
+}
+
+.error__cod {
+  font-weight: normal;
+  font-size: 80px;
+  line-height: 97px;
+  text-align: center;
+  margin: 0px;
+}
+
+.error__text {
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+  margin: 10px auto 284px;
+}
+
+.error__back {
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+  text-align: center;
+  color: #4285F4;
+  margin-bottom: 30px;
+}
+
+/* Основной код для разрешения 320px */
+@media screen and (min-width: 768px) {
+  /* При разрешении выше 768px */
+  .error {
+    margin: 0px 30px;
+  }
+
+  .error__cod {
+    font-size: 140px;
+    line-height: 169px;
+  }
+
+  .error__text {
+    font-size: 16px;
+    line-height: 19px;
+    margin: 5px auto 184px;
+  }
+  
+  .error__back {
+    font-size: 14px;
+    line-height: 17px;
+    margin-bottom: 222px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  /* При разрешении выше 1280px */
+  .error {
+    margin: 0px 70px;
+  }
+  
+  .error__back {
+    margin-bottom: 60px;
+  }
+}

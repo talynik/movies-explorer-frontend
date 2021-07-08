@@ -1,11 +1,12 @@
 import React from 'react';
 import {Link, withRouter} from 'react-router-dom';
 import {useHistory} from 'react-router-dom';
+import Preloader from '../Preloader/Preloader';
 import formValidator from '../formValidator';
 import {validationSign} from '../../utils/utils';
 import logo from '../../logo.svg';
 
-function SignForm({title, button, question, link, linkText, children, identification}) {
+function SignForm({title, isLoading, button, question, link, linkText, children, identification}) {
 
   const history = useHistory();
 
@@ -57,6 +58,7 @@ function SignForm({title, button, question, link, linkText, children, identifica
         <p className="signForm__placeholder">Пароль</p>
         <input  autoComplete="off" type="password" id="password" name="password" className="signForm__input" minLength="8" maxLength="200" required value={password} onChange={handleChangePassword}/>
         <span id="password-error" className="signForm__input-error"></span>
+        {isLoading && <Preloader/>}
         <button className='signForm__button' type="submit" aria-label="Войти" onClick={handleSubmit}>{button}</button>
       </form>
       <p className="signForm__question">{question}<Link to={link} className='signForm__link'>{linkText}</Link></p>
