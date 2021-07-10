@@ -15,12 +15,12 @@ function Navigation({isOpen, isClose, handleEscapeClose, handleOverleyClose}) {
   }, [handleEscapeClose, isOpen, isClose]);
 
   return (
-    <section className={`navigation ${isOpen && 'navigation_opened'} ${history.location.pathname === '/main' && 'header-main'}`} onClick={handleOverleyClose}>
+    <section className={`navigation ${isOpen && 'navigation_opened'} ${history.location.pathname === '/' && 'header-main'}`} onClick={handleOverleyClose}>
       <button className="navigation__close" type="button" aria-label="Закрыть" onClick={isClose}></button>
       <div className="navigation__links">
         <ul className="navigation__list">
           <li>
-            <Link to='/main' className="navigation__link navigation__link_main" onClick={isClose}>Главная</Link>
+            <Link to='/' className="navigation__link navigation__link_main" onClick={isClose}>Главная</Link>
           </li>
           <li>
             <Link to='/movies' className="navigation__link" onClick={isClose}>Фильмы</Link>

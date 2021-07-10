@@ -1,5 +1,5 @@
 import React from 'react';
-import {Switch, Route, Redirect, useHistory, withRouter} from 'react-router-dom';
+import {Switch, Route, useHistory, withRouter} from 'react-router-dom';
 import ProtectedRoute from '../ProtectedRoute';
 import Header from '../Header/Header';
 import Main from '../Main/Main';
@@ -20,7 +20,7 @@ function App() {
 
   // переменная отображения шапки
   const onDispleyHeader = (
-    history.location.pathname === '/main' ||
+    history.location.pathname === '/' ||
     history.location.pathname === '/movies' ||
     history.location.pathname === '/savedmovies' ||
     history.location.pathname === '/profile'
@@ -28,7 +28,7 @@ function App() {
 
   // переменная отображения подвала
   const onDispleyFooter = (
-    history.location.pathname === '/main' ||
+    history.location.pathname === '/' ||
     history.location.pathname === '/movies' ||
     history.location.pathname === '/savedmovies'
     );
@@ -116,7 +116,7 @@ function App() {
   function handleExit() {
     localStorage.removeItem('jwt');
     setLoggedIn(false);
-    history.replace('/main');
+    history.replace('/');
   }
 
   // загрузка данных
@@ -257,11 +257,11 @@ function App() {
           />}
 
           <Switch>
-            <Route path='/main'>
+            <Route exact path='/'>
               <Main/>
             </Route>
 
-            <ProtectedRoute path='/movies'
+            <ProtectedRoute exact path='/movies'
               component={Movies}
               loggedIn={loggedIn}
               onLoading={loadDataMovies}
@@ -272,7 +272,7 @@ function App() {
               deleteMovies={handleDeleteMovies}
             />
 
-            <ProtectedRoute path='/savedmovies'
+            <ProtectedRoute exact path='/savedmovies'
               component={SavedMovies}
               loggedIn={loggedIn}
               onLoading={filterName}
@@ -282,7 +282,7 @@ function App() {
               deleteMovies={handleDeleteMovies}
             />
 
-            <ProtectedRoute path='/profile'
+            <ProtectedRoute exact path='/profile'
               component={Profile}
               loggedIn={loggedIn}
               isLoading={isLoading}
@@ -291,22 +291,18 @@ function App() {
               handleExit={handleExit}
             />
 
-            <Route path='/signin'>
+            <Route exact path='/signin'>
               <Login
                 identification={authorization}
                 isLoading={isLoading}
               />
             </Route>
 
-            <Route path='/signup'>
+            <Route exact path='/signup'>
               <Register
                 identification={registration}
                 isLoading={isLoading}
               />
-            </Route>
-
-            <Route>
-                {!loggedIn && <Redirect to='/main' />}
             </Route>
 
             <Route path='/'>

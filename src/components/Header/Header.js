@@ -32,8 +32,8 @@ function Header({loggedIn}) {
   }
 
   return (
-    <header className={`header ${history.location.pathname !== '/main' && 'header-black'}`}>
-      <Link to='/main' className="header__link-main"><img src={logo} className="header__logo" alt="Логотип" /></Link>
+    <header className={`header ${history.location.pathname !== '/' && 'header-black'}`}>
+      <Link to='/' className="header__link-main"><img src={logo} className="header__logo" alt="Логотип" /></Link>
       {!loggedIn ?
         <>
           <div className="header__links">
