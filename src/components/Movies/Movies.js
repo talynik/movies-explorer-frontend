@@ -12,32 +12,39 @@ function Movies({cards, saveCardsId, onLoading, isLoading, deleteMovies, saveMov
   function handleChecked() {
     checked ? setChecked(false) : setChecked(true)
   }
+  // переменная состояния разрешения экрана
+  const [width, setWidth] = React.useState();
+  // переменная количества карточек
+  const [maxCards, setMaxCards] = React.useState(0);
+  // переменная множителя
+  const [plus, setPlus] = React.useState(0);
 
-  let maxCards = 0;
-  let plus = 0;
-  
+  React.useEffect(() => {
+    function changeWindowWidth (){
+      setWidth(window.innerWidth);
+    }
+    window.addEventListener("resize", changeWindowWidth);
+    changeWindowWidth();
+    return () => window.removeEventListener("resize", changeWindowWidth);
+  }, []);
+
   function handleAddCards() {
-    plus = ++plus
-    handleMaxCards(plus)
+    setPlus(plus + 1);
   }
 
-  window.addEventListener("resize", handleMaxCards(plus));
+  React.useEffect(() => {
+    if(width >= 1280) {
+      setMaxCards(12 + (3 * plus));
+    } else if(width >= 768) {
+      setMaxCards(8 + (2 * plus));
+      } else {
+        setMaxCards(5 + (2 * plus));
+      }
+  }, [width, setMaxCards, plus]);
 
   let movies = [];
 
   checked ? movies = cards.filter(card => card.duration < 40) : movies = cards;
-
-  function handleMaxCards(plus) {
-    if(document.documentElement.clientWidth >= 1280) {
-      maxCards = 12 + (3 * plus);
-    } else {
-      if(document.documentElement.clientWidth >= 768) {
-        maxCards = 8 + (2 * plus);
-      } else {
-        maxCards = 5 + (2 * plus);
-      }
-    }
-  }
 
   return (
     <section className="movies">
