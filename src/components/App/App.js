@@ -19,7 +19,7 @@ function App() {
   const history = useHistory();
 
   // переменная отображения шапки
-  let onDispleyHeader = (
+  const onDispleyHeader = (
     history.location.pathname === '/main' ||
     history.location.pathname === '/movies' ||
     history.location.pathname === '/savedmovies' ||
@@ -27,7 +27,7 @@ function App() {
     );
 
   // переменная отображения подвала
-  let onDispleyFooter = (
+  const onDispleyFooter = (
     history.location.pathname === '/main' ||
     history.location.pathname === '/movies' ||
     history.location.pathname === '/savedmovies'
@@ -39,35 +39,32 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState({});
   // пременная состояния загрузки
   const [isLoading, setIsLoading] = React.useState(false);
-  // информация о фильмах
-  // const [cardsMovies, setCardsMovies] = React.useState([]);
   // информация о карточках
+  const [movies, setMovies] = React.useState([]);
+    // информация о отфильтрованных карточках
   const [cards, setCards] = React.useState([]);
   // информация о сохраненных карточках
   const [saveCards, setSaveCards] = React.useState([]);
-  //переменная массива идентификаторов сохраненных карточек
+  // переменная массива идентификаторов сохраненных карточек
   const [saveCardsId, setSaveCardsId] = React.useState([]);
+  // переменная сообщений на странице профиля
+  const [messageProfile, setMessageProfile] = React.useState('');
 
   // проверка наличия токена и загрузка данных
   React.useEffect(() => {
     if (localStorage.getItem('jwt')) {
       mainApi
         .getUserInfo()
-        .then(() => {
+        .then((userData) => {
+          setCurrentUser(userData.data);
           setLoggedIn(true);
-          history.replace('/movies');
           loadData();
         })
-        .catch(err => console.log(err));
+        .catch((err) => {
+          console.log(err);
+        })
     }
   }, [history])
-
-  // проверка наличия данных карточек в LS
-  React.useEffect(() => {
-    if (localStorage.cards) {
-      setCards(JSON.parse(localStorage.cards))
-    }
-  }, [setCards])
 
   //авторизация пользователя
   function authorization(user) {
@@ -75,11 +72,15 @@ function App() {
       .authorize({email: user.email, password: user.password})
       .then((data) => {
         localStorage.setItem('jwt', data.token);
+      })  
+      .then(()=> {
         loadData();
         setLoggedIn(true);
         history.replace('/movies');
       })
-      .catch(err=>console.log(err))
+      .catch((err) => {
+        console.log(err);
+      })
       .finally(() => {
         setIsLoading(false);
       });
@@ -92,6 +93,8 @@ function App() {
       .register(newUser)
       .then((data) => {
         localStorage.setItem('jwt', data.token);
+      })  
+      .then(() => {
         loadData();
         setLoggedIn(true);
         history.replace('/movies');
@@ -123,7 +126,9 @@ function App() {
       .then((userData) => {
         setCurrentUser(userData.data);
       })
-      .catch(err => console.log(err));
+      .catch((err) => {
+        console.log(err);
+      })
 
     mainApi
       .getCard()
@@ -131,7 +136,9 @@ function App() {
         setSaveCards(cardData.data);
         setSaveCardsId(cardData.data.map(i => i.movieId));
       })
-      .catch(err => console.log(err))
+      .catch((err) => {
+        console.log(err);
+      })
       .finally(() => {
         setIsLoading(false);
       });
@@ -144,8 +151,11 @@ function App() {
       .setUserInfo(newUserData)
       .then((userData) => {
         setCurrentUser(userData.data);
+        setMessageProfile('Изменения профиля сохранены.')
       })
-      .catch(err=>console.log(err))
+      .catch((err) => {
+        console.log(err);
+      })
       .finally(() => {
         setIsLoading(false);
       });
@@ -154,24 +164,36 @@ function App() {
 
   // загрузка данных с сервиса beatfilm-movies и поиск фильмов
   function loadDataMovies(name) {
-    moviesApi
-      .getCards()
-      .then((cardData) => {
-        if (name !== "") {
-          setCards(cardData.filter(card => card.nameRU.toLowerCase().includes(name.toLowerCase())));
-          localStorage.cards = JSON.stringify(cardData.filter(card => card.nameRU.toLowerCase().includes(name.toLowerCase())));
-        }
-      })
-      .catch(err => console.log(err))
-      .finally(() => {
-        setIsLoading(false);
-      });
-    setIsLoading(true);
+    if (!JSON.parse(localStorage.movies)) {
+      moviesApi
+        .getCards()
+        .then((cardData) => {
+          localStorage.movies = JSON.stringify(cardData);
+        })
+        .then(() => {
+          filterNameMovies(name);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
+      setIsLoading(true);
+    } else {
+      filterNameMovies(name);
+    }
+  }
+
+  // функция фильтра по фильмам
+  function filterNameMovies(name) {
+    setMovies(JSON.parse(localStorage.movies));
+    name !== "" && setCards(movies.filter(card => card.nameRU.toLowerCase().includes(name.toLowerCase())));
   }
 
   // функция фильтра по имени для избранных фильмов
   function filterName(name) {
-    name !== "" && setSaveCards(saveCards.filter(card => card.nameRU.toLowerCase().includes(name.toLowerCase())))
+    name !== "" && setSaveCards(saveCards.filter(card => card.nameRU.toLowerCase().includes(name.toLowerCase())));
   }
 
   // добавление новой карточки
@@ -196,7 +218,9 @@ function App() {
         setSaveCards([newCard.data, ...saveCards]);
         setSaveCardsId([newCard.data.movieId, ...saveCardsId])
       })
-      .catch(err=>console.log(err))
+      .catch((err) => {
+        console.log(err);
+      })
       .finally(() => {
         setIsLoading(false);
       });
@@ -213,7 +237,9 @@ function App() {
       setSaveCards((state) => state.filter((c) => c._id !== id));
       setSaveCardsId(saveCardsId.filter((c) => c !== card.id));
     })
-    .catch(err => console.log(err))
+    .catch((err) => {
+      console.log(err);
+    })
     .finally(() => {
       setIsLoading(false);
     });
@@ -260,6 +286,7 @@ function App() {
               component={Profile}
               loggedIn={loggedIn}
               isLoading={isLoading}
+              messageProfile={messageProfile}
               editProfile={handleUpdateUser}
               handleExit={handleExit}
             />
@@ -279,10 +306,12 @@ function App() {
             </Route>
 
             <Route>
-                {loggedIn ? <Redirect to='/movies' /> : <Redirect to='/main' />}
+                {!loggedIn && <Redirect to='/main' />}
             </Route>
 
-            <Error/>
+            <Route path='/'>
+              <Error />
+            </Route>
 
           </Switch>
 

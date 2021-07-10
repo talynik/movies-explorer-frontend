@@ -9,6 +9,7 @@ function MoviesCard({card, saveCardsId, deleteMovies, saveMovies}) {
   let activLike = '';
   let trailer = '';
   let image = '';
+  let duration = `${Math.floor(card.duration / 60)} ч ${card.duration % 60} мин`;
   
   if(history.location.pathname === '/savedmovies') {
     isLiked = true;
@@ -34,7 +35,7 @@ function MoviesCard({card, saveCardsId, deleteMovies, saveMovies}) {
       <div className="moviesCard__group">
         <div className="moviesCard__text">
           <h2 className="moviesCard__name">{card.nameRU}</h2>
-          <h3 className="moviesCard__time">{card.duration}</h3>
+          <h3 className="moviesCard__time">{duration}</h3>
         </div>
         <button className={`moviesCard__like ${isLiked && activLike}`} type="button" aria-label="Нравится" onClick={handleLikeClick}></button>
       </div>

@@ -96,7 +96,7 @@ class MainApi{
 let jwt = localStorage.getItem('jwt');
 
 const mainApi = new MainApi({
-  url: 'https://api.talynik.diploma.nomoredomains.club', 
+  url: 'http://localhost:3005', 
   headers:{
     'Content-Type': 'application/json',
     'Authorization': `Bearer ${jwt}`
