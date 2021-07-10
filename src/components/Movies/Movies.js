@@ -46,6 +46,8 @@ function Movies({cards, saveCardsId, onLoading, isLoading, deleteMovies, saveMov
 
   checked ? movies = cards.filter(card => card.duration < 40) : movies = cards;
 
+  let length = movies.length;
+
   return (
     <section className="movies">
       <SearchForm
@@ -62,7 +64,7 @@ function Movies({cards, saveCardsId, onLoading, isLoading, deleteMovies, saveMov
         deleteMovies={deleteMovies}
         saveMovies={saveMovies}
       />
-      <button className="movies__button" type="button" aria-label="Ещё" onClick={handleAddCards}>Ещё</button>
+      {length > maxCards && <button className="movies__button" type="button" aria-label="Ещё" onClick={handleAddCards}>Ещё</button>}
     </section>
   );
 }

@@ -98,13 +98,9 @@ function App() {
         loadData();
         setLoggedIn(true);
         history.replace('/movies');
-        // setTitleInfoTooltip('Вы успешно зарегистрировались!');
-        // setStatusTitleInfoTooltip(success);
       })
       .catch((err) => {
         console.log(err);
-        // setTitleInfoTooltip('Что-то пошло не так! Попробуйте ещё раз.');
-        // setStatusTitleInfoTooltip(failure);
       })
       .finally(() => {
         setIsLoading(false);
