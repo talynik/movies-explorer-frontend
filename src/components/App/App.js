@@ -39,8 +39,6 @@ function App() {
   const [currentUser, setCurrentUser] = React.useState({});
   // пременная состояния загрузки
   const [isLoading, setIsLoading] = React.useState(false);
-  // информация о карточках
-  const [movies, setMovies] = React.useState([]);
     // информация о отфильтрованных карточках
   const [cards, setCards] = React.useState([]);
   // информация о сохраненных карточках
@@ -158,15 +156,16 @@ function App() {
     setIsLoading(true);
   }
 
+  // переменная загруженных фильмов
+  let moviesArhiv = JSON.parse(localStorage.getItem("movies"));
+
   // загрузка данных с сервиса beatfilm-movies и поиск фильмов
   function loadDataMovies(name) {
-    if (!JSON.parse(localStorage.movies)) {
+    if (moviesArhiv.length === 0) {
       moviesApi
         .getCards()
         .then((cardData) => {
-          localStorage.movies = JSON.stringify(cardData);
-        })
-        .then(() => {
+          localStorage.setItem('movies', JSON.stringify(cardData));
           filterNameMovies(name);
         })
         .catch((err) => {
@@ -183,8 +182,8 @@ function App() {
 
   // функция фильтра по фильмам
   function filterNameMovies(name) {
-    setMovies(JSON.parse(localStorage.movies));
-    name !== "" && setCards(movies.filter(card => card.nameRU.toLowerCase().includes(name.toLowerCase())));
+    moviesArhiv = JSON.parse(localStorage.getItem("movies"));
+    name !== "" && setCards(moviesArhiv.filter(card => card.nameRU.toLowerCase().includes(name.toLowerCase())));
   }
 
   // функция фильтра по имени для избранных фильмов
