@@ -161,7 +161,7 @@ function App() {
 
   // загрузка данных с сервиса beatfilm-movies и поиск фильмов
   function loadDataMovies(name) {
-    if (moviesArhiv.length === 0) {
+    if (!moviesArhiv) {
       moviesApi
         .getCards()
         .then((cardData) => {
