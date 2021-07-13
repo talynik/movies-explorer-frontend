@@ -12,10 +12,11 @@
 @import url(./components/Main/AboutMe/AboutMe.css);
 @import url(./components/Main/Portfolio/Portfolio.css);
 
+@import url(./components/Preloader/Preloader.css);
+
 @import url(./components/Movies/Movies.css);
 @import url(./components/Movies/SearchForm/SearchForm.css);
 @import url(./components/Movies/FilterCheckbox/FilterCheckbox.css);
-@import url(./components/Movies/Preloader/Preloader.css);
 @import url(./components/Movies/MoviesCardList/MoviesCardList.css);
 @import url(./components/Movies/MoviesCard/MoviesCard.css);
 
@@ -28,3 +29,5 @@
 @import url(./components/SignForm/SignForm.css);
 
 @import url(./components/Footer/Footer.css);
+
+@import url(./components/Error/Error.css);

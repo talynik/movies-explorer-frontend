@@ -1,6 +1,7 @@
 .movies {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   margin: 0px 10px;
 }
 
@@ -19,6 +20,11 @@
   margin: 50px 0px 80px;
   padding: 0px;
   border: none;
+  cursor: pointer;
+}
+
+.movies__button:hover {
+  opacity: 0.7;
 }
 
 

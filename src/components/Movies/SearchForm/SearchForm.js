@@ -1,30 +1,25 @@
 import React from 'react';
-import Preloader from '../Preloader/Preloader'
 
-function SearchForm({onLoading, isLoading, ofLoading}) {
+function SearchForm({onLoading}) {
 
-  // закрытие на ESC
-  React.useEffect(() => {
-    if (!isLoading) {
-      document.addEventListener("keydown", ofLoading);
-    } else {
-      document.removeEventListener("keydown", ofLoading);
-    }
-  }, [ofLoading, isLoading]);
+  const [searchMovie, setSearchMovie] = React.useState('');
+
+  function handleChangeSearchMovie(evt) {
+    setSearchMovie(evt.target.value);
+  }
 
   function handleSubmit(evt) {
     evt.preventDefault();
   
-    onLoading();
+    onLoading(searchMovie);
   }
 
   return (
     <section className="searchForm">
       <form className="searchForm__form">
-        <input  autoComplete="off" id="search" name="search" className="searchForm__input" placeholder="Фильм" required/>
+        <input  autoComplete="off" id="search" name="search" className="searchForm__input" placeholder="Фильм" required minLength="1" value={searchMovie} onChange={handleChangeSearchMovie}/>
         <button className="searchForm__button" type="submit" aria-label="Найти" onClick={handleSubmit}>Найти</button>
       </form>
-      {isLoading && <Preloader/>}
     </section>
   );
 }

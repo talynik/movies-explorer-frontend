@@ -1,19 +1,20 @@
 .navigation {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  align-self: center;
-  justify-self: center;
-  background-color: #202020;
+  background: #202020;
   position: absolute;
   top: 0;
   right: 0;
   min-width: 320px;
+  height: 100vh;
   visibility: hidden;
   opacity: 0;
   z-index: 1;
   transition: all .5s;
+}
+
+.header-main {
+  background: #073042;
 }
 
 .navigation_opened {
@@ -43,7 +44,8 @@
 .navigation__links {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
+  height: 100%;
 }
 
 .navigation__list {
@@ -81,7 +83,7 @@
   border-radius: 20px;
   border: 0px;
   padding: 0px;
-  margin: 420px auto 46px;
+  margin: 20px auto 46px;
   font-weight: 500;
   font-size: 14px;
   line-height: 16px;
@@ -110,7 +112,7 @@
   }
   
   .navigation__akkaunt {
-    margin: 593px auto 90px;
+    margin: 20px auto 90px;
   }
 }
 
@@ -139,6 +141,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
     margin: 0px 70px 0px 0px;
   }

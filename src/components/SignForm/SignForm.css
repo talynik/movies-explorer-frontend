@@ -2,6 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  height: 100vh;
   padding: 56px 30px 30px;
 }
 
@@ -12,6 +13,7 @@
 .signForm__form {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   width: 100%;
   color: #FFFFFF;
@@ -52,8 +54,8 @@
 
 .signForm__input-error {
   font-weight: normal;
-  font-size: 10px;
-  line-height: 12px;
+  font-size: 14px;
+  line-height: 17px;
   color: #EE3465;
   display: block;
   margin: 6px 0px;
@@ -70,13 +72,17 @@
   font-size: 12px;
   line-height: 15px;
   color: #FFFFFF;
-  margin-top: 273px;
   margin-bottom: 14px;
   cursor: pointer;
 }
 
 .signForm__button:hover {
   opacity: 0.8;
+}
+
+.signForm__button_disabled {
+  background: #F8F8F8;
+  color: #C2C2C2;
 }
 
 .signForm__question {
@@ -111,7 +117,6 @@
   .signForm__button {
     font-size: 14px;
     line-height: 17px;
-    margin-top: 185px;
     margin-bottom: 16px;
   }
 
@@ -125,9 +130,5 @@
   /* При разрешении выше 1280px */
   .signForm {
     padding: 70px 442px;
-  }
-
-  .signForm__button {
-    margin-top: 198px;
   }
 }
